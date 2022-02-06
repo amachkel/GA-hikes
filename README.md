@@ -1,1 +1,1 @@
-# GA-hike
+# GA-hikes
