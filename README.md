@@ -1,4 +1,2 @@
 # GA-hikes
-
-
-Travis Woods
+Amanda WOOHOO
