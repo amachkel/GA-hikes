@@ -1,5 +1,12 @@
+
+.title {
+    display: inline-block;
+    justify-content: center;
+}
+
 .navbar-brand {
-    font-size: 30px;
+    font-size: 25px;
+
 }
 
 .background-jumbo {
