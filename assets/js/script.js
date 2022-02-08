@@ -1,7 +1,9 @@
 /* GA - Hikes JS */
 var dropMenuBtn = document.querySelector('dropMenuBtn');
 
-var AndersonvilleHike = '';
+dropMenuBtn.addEventListener('click', function(){});
+
+var AndersonvilleHike = ''; //For the hiking difficulties if we decide to use them.
 var AppalachianHike = '';
 var ChattahoocheeHike = '';
 var ChickamaugaHike = '';
