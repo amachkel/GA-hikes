@@ -1,19 +1,30 @@
+:root {
+  --drk-green: #3a5743;
+  --brown: #8b5d33;
+  --lt-brown: #f2cc8f;
+}
 
+body {
+  font-family: "Libre Baskerville", serif;
+}
+
+p.jumbo-text {
+  font-size: 36px;
+}
 .title {
-    display: inline-block;
-    justify-content: center;
+  display: inline-block;
+  justify-content: center;
 }
 
 .navbar-brand {
-    font-size: 25px;
-
+  font-size: 25px;
 }
 
 .background-jumbo {
-    background-color: white;
+  background-color: white;
 }
 
 .jumbo-text {
-    text-align: center;
-    font-size: 20px;
+  text-align: center;
+  font-size: 20px;
 }
