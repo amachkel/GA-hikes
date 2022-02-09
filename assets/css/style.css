@@ -28,3 +28,9 @@ p.jumbo-text {
   text-align: center;
   font-size: 20px;
 }
+
+.container.fixed-bottom {
+    width: 100%;
+    left:40%;
+    right:40%;
+}
