@@ -29,8 +29,20 @@ p.jumbo-text {
   font-size: 20px;
 }
 
+.jumbotron {
+  background-color: transparent;
+}
+.card {
+  background-color: transparent;
+  border: none;
+}
 .container.fixed-bottom {
     width: 100%;
     left:40%;
     right:40%;
+}
+
+#main {
+  background-image: url("../images/field.jpg");
+  height: 100vh;
 }

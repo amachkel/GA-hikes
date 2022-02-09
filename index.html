@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <main role="main" class="background-jumbo">
+    <main role="main" class="background-jumbo" id="main">
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">
@@ -36,8 +36,8 @@
           make a selection, you will be presented with a 5 day forecast for that
           location.
         </p>
-        <form>
-          <div class="form-group">
+        <form class="col-sm-10">
+          <div class="row flex-nowrap form-group">
             <label for="exampleFormControlSelect1"></label>
             <select class="form-control" id="exampleFormControlSelect1">
               <option>Andersonville National Historic Site</option>
@@ -52,7 +52,9 @@
               <option>Martin Luther King, Jr. National Historical Park</option>
               <option>Ocmulgee Mounds National Historical Park</option>
             </select>
+            <button type="button" class="btn btn-secondary">Search</button>
           </div>
+          
         </form>
         <div class="card">
           <img
