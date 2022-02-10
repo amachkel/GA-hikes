@@ -89,7 +89,6 @@ function parkApi() {
 
 parkApi();
 
-
 function getForecast() {
     let resultsObj = {};
     
@@ -118,7 +117,6 @@ for (let i = 0; i < 5; i++) {
     });
 }
 getForecast();
-
 
 //arcgis(potential maps API) key AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP
 
