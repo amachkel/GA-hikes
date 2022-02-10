@@ -1,9 +1,22 @@
 /* GA - Hikes JS */
+<<<<<<< HEAD
 var searchBtn = document.getElementById('searchBtn'); // Finds the id: searchBtn to add functionality to it below.
 
 if (searchBtn){ // Makes sure that the button has loaded before becoming clickable.
     searchBtn.addEventListener('click', searchFunc);
 }
+=======
+var searchBtn = document.getElementById('searchBtn');
+
+if (searchBtn){
+    searchBtn.addEventListener('click', searchFunc);
+}
+
+function searchFunc(){
+    console.log('Search has been clicked.');
+    window.location.replace("index2.html");
+}
+>>>>>>> 21aea2a5df56e0ba96b5d163af495550f1cddd50
 
 function searchFunc(){ // Moves user out to index2.html when the search button is clicked.
     console.log('Search has been clicked.');
