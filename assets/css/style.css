@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 0cf457c2c1917607e60dba2895e5fa2c8b35b795
-=======
 :root {
   --drk-green: #3a5743;
   --brown: #8b5d33;
@@ -18,29 +11,15 @@ body {
 p.jumbo-text {
   font-size: 36px;
 }
->>>>>>> 1144c275a7234766645b304a0d9d15de239d28a1
-=======
 
->>>>>>> fa44869bd61ea07a17f8c83f455df0387264725d
 .title {
   display: inline-block;
   justify-content: center;
 }
 
 .navbar-brand {
-<<<<<<< HEAD
+
     font-size: 25px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 0cf457c2c1917607e60dba2895e5fa2c8b35b795
-=======
-  font-size: 25px;
->>>>>>> 1144c275a7234766645b304a0d9d15de239d28a1
-=======
-
->>>>>>> fa44869bd61ea07a17f8c83f455df0387264725d
 }
 
 .background-jumbo {
@@ -68,4 +47,9 @@ p.jumbo-text {
 #main {
   background-image: url("../images/field.jpg");
   height: 100vh;
+}
+
+.map {
+  height: 400px;
+  width: 100%;
 }
