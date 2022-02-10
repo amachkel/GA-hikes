@@ -1,6 +1,16 @@
-//NPI GA Data Link: https://developer.nps.gov/api/v1/parks?stateCode=GA&api_key=iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK
+//NPS GA Data Link: https://developer.nps.gov/api/v1/parks?stateCode=GA&api_key=iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK
 
-//NPI API Variables
+//Variables to append data to page
+var npsDataDisplay = document.querySelector("#data-display");
+var nameLocation = document.createElement("h2");
+var descLocation = document.createElement("p");
+var urlLocation = document.createElement("a");
+var hoursLocation = document.createElement("p");
+var feeLocation = document.createElement("p");
+var directLocation = document.createElement("p");
+var imageLocation = document.createElement("img");
+
+//NPS API Variables
 var data = [
     {parkCode: "ande",
     fullName: "Andersonville National Historic Site"
@@ -40,28 +50,44 @@ var data = [
     }
 ]
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
-var dataDisplay = document.querySelector("#data-display");
 
-//NPI API Function
+//NPS API Function
 function parkApi() {
-    var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=" + APIKey;
-    fetch(queryURL)
-      .then(function (response) {
-        if (200 !== response.status) {
-          dataDisplay.append(
-            "There was a problem with your query. Status Code: " + response.status
-          );
-          return;
-        }
-        return response.json();
-      })
-  
-      .then(function (data) {
-        console.log(data);
-      })
-  };
+  var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" + "ande" + "&api_key=" + APIKey;
+  fetch(queryURL)
+    .then(function (response) {
+      if (200 !== response.status) {
+        dataDisplay.append(
+          "There was a problem with your query. Status Code: " + response.status
+        );
+        return;
+      }
+      return response.json();
+    })
 
-  parkApi();
+    .then(function (data) {
+      console.log(data);
+
+      nameLocation.textContent = data.data[0].fullName;
+      descLocation.textContent = data.data[0].description;
+      urlLocation.innerHTML =  "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
+      hoursLocation.textContent = data.data[0].operatingHours[0].description;
+      feeLocation.textContent = data.data[0].entranceFees[0].description;
+      directLocation.textContent = data.data[0].directionsInfo;
+      //imageLocation.innerHTML = "<img src=" + data[0].images[0].url + ">";
+
+      npsDataDisplay.append(nameLocation);
+      npsDataDisplay.append(urlLocation);
+      npsDataDisplay.append(descLocation);
+      npsDataDisplay.append(hoursLocation);
+      npsDataDisplay.append(feeLocation);
+      npsDataDisplay.append(directLocation);
+      npsDataDisplay.append(imageLocation);
+
+    })
+};
+
+parkApi();
 
 
 function getForecast() {
