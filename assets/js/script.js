@@ -1,16 +1,16 @@
 /* GA - Hikes JS */
-var dropMenuBtn = document.querySelector('dropMenuBtn');
+var searchBtn = document.getElementById('searchBtn');
 
-dropMenuBtn.addEventListener('click', function(){});
+if (searchBtn){
+    searchBtn.addEventListener('click', searchFunc);
+}
 
-var AndersonvilleHike = ''; //For the hiking difficulties if we decide to use them.
-var AppalachianHike = '';
-var ChattahoocheeHike = '';
-var ChickamaugaHike = '';
-var CumberlandHike = '';
-var FortFredericaHike = '';
-var FortPulaskiHike = '';
-var KennesawHike = '';
-var JCHike = '';
-var MLKHike = '';
-var OcmulgeeHike = '';
+function searchFunc(){
+    console.log('Search has been clicked.');
+    window.location.replace("index2.html");
+}
+
+var AndersonvilleHike = ''; // These need to be changed into an Array with the associated areas.
+var AppalachianHike = '';   // The goal is to list a range of hoke lengths with the arrays and a string set up.
+var ChattahoocheeHike = ''; // It will be attached as a child element at the bottom of index2.html
+// ... list continues ...
