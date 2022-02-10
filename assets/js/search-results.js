@@ -91,3 +91,19 @@ for (let i = 0; i < 5; i++) {
     });
 }
 getForecast();
+
+//arcgis(potential maps API) key AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP
+
+//code for OpenLayers Map:
+var map = new ol.Map({
+  target: 'map',
+  layers: [
+    new ol.layer.Tile({
+      source: new ol.source.OSM()
+    })
+  ],
+  view: new ol.View({
+    center: ol.proj.fromLonLat([37.41, 8.82]),
+    zoom: 4
+  })
+});
