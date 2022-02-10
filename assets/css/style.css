@@ -11,13 +11,15 @@ body {
 p.jumbo-text {
   font-size: 36px;
 }
+
 .title {
   display: inline-block;
   justify-content: center;
 }
 
 .navbar-brand {
-  font-size: 25px;
+
+    font-size: 25px;
 }
 
 .background-jumbo {
