@@ -26,9 +26,12 @@ var data = [
   { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail" },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
+<<<<<<< HEAD
+=======
 var parkCode; //to keep line 35 from throwing an error
+>>>>>>> 416bcb6a483ffd4f6643d4f395fd6e5ad53ba471
 
-//NPI API Function
+//NPS API Function
 function parkApi() {
   var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" + "ande" + "&api_key=" + APIKey;
   fetch(queryURL)
@@ -44,8 +47,11 @@ function parkApi() {
 
     .then(function (data) {
       console.log(data);
+<<<<<<< HEAD
+=======
     });
 }
+>>>>>>> 416bcb6a483ffd4f6643d4f395fd6e5ad53ba471
 
       nameLocation.textContent = data.data[0].fullName;
       descLocation.textContent = data.data[0].description;
@@ -177,3 +183,7 @@ var map = new ol.Map({
     zoom: 4
   })
 });
+<<<<<<< HEAD
+
+=======
+>>>>>>> 416bcb6a483ffd4f6643d4f395fd6e5ad53ba471
