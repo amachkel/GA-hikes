@@ -110,7 +110,7 @@ function getForecast() {
       resultsObj.forecastResults = [];
       for (let i = 0; i < 5; i++) {
         let forecastObj = {};
-        forecastObj.date = new Date(data.daily[i].dt *1000);
+        forecastObj.date = new Date(data.daily[i].dt *1000).toLocaleDateString();
         forecastObj.minTemp = data.daily[i].temp.min;
         forecastObj.maxTemp = data.daily[i].temp.max;
         forecastObj.img = data.daily[i].weather[0].icon;
