@@ -4,11 +4,11 @@
 var npsDataDisplay = document.querySelector("#data-display");
 var nameLocation = document.createElement("h2");
 var descLocation = document.createElement("p");
-var urlLocation = document.createElement("a");
+var urlLocation = document.createElement("p");
 var hoursLocation = document.createElement("p");
 var feeLocation = document.createElement("p");
 var directLocation = document.createElement("p");
-var imageLocation = document.createElement("img");
+var imageLocation = document.createElement("figure");
 
 //NPS API Variables
 var data = [
@@ -30,7 +30,7 @@ var parkCode; //to keep queryURL from throwing an error
 
 //NPS API Function
 function parkApi() {
-  var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" + "ande" + "&api_key=" + APIKey;
+  var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" + "ocmu" + "&api_key=" + APIKey;
   fetch(queryURL)
     .then(function (response) {
       if (200 !== response.status) {
@@ -47,11 +47,10 @@ function parkApi() {
 
       nameLocation.textContent = data.data[0].fullName;
       descLocation.textContent = data.data[0].description;
-      urlLocation.innerHTML =  "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
+      urlLocation.innerHTML = "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
       hoursLocation.textContent = data.data[0].operatingHours[0].description;
       feeLocation.textContent = data.data[0].entranceFees[0].description;
-      directLocation.textContent = data.data[0].directionsInfo;
-      //imageLocation.innerHTML = "<img src=" + data[0].images[0].url + ">";
+      directLocation.textContent = "Directions: "+ data.data[0].directionsInfo;
 
       npsDataDisplay.append(nameLocation);
       npsDataDisplay.append(urlLocation);
@@ -59,10 +58,21 @@ function parkApi() {
       npsDataDisplay.append(hoursLocation);
       npsDataDisplay.append(feeLocation);
       npsDataDisplay.append(directLocation);
-      npsDataDisplay.append(imageLocation);
-    });
-}
+
+      var imageData = data.data[0].images;
+
+      saveImages(data.data[0].images);
+    })
+};
+
 parkApi();
+
+//Function to append a random image to index2.html
+function saveImages(imageData) {
+  var randomImage = imageData[Math.floor(Math.random() * imageData.length)];
+  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='500'><figcaption>" + randomImage.caption + "</figcaption>";
+  npsDataDisplay.append(imageLocation);
+};
 
 function getForecast() {
   var resultsObj = {};
@@ -125,7 +135,7 @@ require(["esri/config", "esri/Map", "esri/views/MapView"], function (
 ) {
   esriConfig.apiKey =
     "AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP";
- 
+
   var map = new Map({
     basemap: "hybrid", // Basemap layer
   });
