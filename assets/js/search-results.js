@@ -26,6 +26,7 @@ var data = [
   { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail" },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
+
 var parkCode; //to keep line 35 from throwing an error
 
 //NPS API Function
@@ -169,17 +170,3 @@ function toggleMaps() {
   }
 }
 toggleEvent();
-
-//code for OpenLayers Map:
-var map = new ol.Map({
-  target: 'map',
-  layers: [
-    new ol.layer.Tile({
-      source: new ol.source.OSM()
-    })
-  ],
-  view: new ol.View({
-    center: ol.proj.fromLonLat([37.41, 8.82]),
-    zoom: 4
-  })
-});
