@@ -26,7 +26,7 @@ var data = [
   { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail" },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
-var parkCode; //to keep line 35 from throwing an error
+var parkCode; //to keep queryURL from throwing an error
 
 //NPI API Function
 function parkApi() {
@@ -47,24 +47,24 @@ function parkApi() {
     });
 }
 
-      nameLocation.textContent = data.data[0].fullName;
-      descLocation.textContent = data.data[0].description;
-      urlLocation.innerHTML =  "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
-      hoursLocation.textContent = data.data[0].operatingHours[0].description;
-      feeLocation.textContent = data.data[0].entranceFees[0].description;
-      directLocation.textContent = data.data[0].directionsInfo;
-      //imageLocation.innerHTML = "<img src=" + data[0].images[0].url + ">";
+//       nameLocation.textContent = data.data[0].fullName;
+//       descLocation.textContent = data.data[0].description;
+//       urlLocation.innerHTML =  "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
+//       hoursLocation.textContent = data.data[0].operatingHours[0].description;
+//       feeLocation.textContent = data.data[0].entranceFees[0].description;
+//       directLocation.textContent = data.data[0].directionsInfo;
+//       //imageLocation.innerHTML = "<img src=" + data[0].images[0].url + ">";
 
-      npsDataDisplay.append(nameLocation);
-      npsDataDisplay.append(urlLocation);
-      npsDataDisplay.append(descLocation);
-      npsDataDisplay.append(hoursLocation);
-      npsDataDisplay.append(feeLocation);
-      npsDataDisplay.append(directLocation);
-      npsDataDisplay.append(imageLocation);
+//       npsDataDisplay.append(nameLocation);
+//       npsDataDisplay.append(urlLocation);
+//       npsDataDisplay.append(descLocation);
+//       npsDataDisplay.append(hoursLocation);
+//       npsDataDisplay.append(feeLocation);
+//       npsDataDisplay.append(directLocation);
+//       npsDataDisplay.append(imageLocation);
 
-    })
-};
+//     })
+// };
 
 parkApi();
 
@@ -97,7 +97,7 @@ function getForecast() {
 }
 getForecast();
 
-//arcgis(potential maps API) key AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP
+//arcgis API key AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP
 
 require(["esri/config", "esri/Map", "esri/views/MapView"], function (
   esriConfig,
@@ -163,17 +163,3 @@ function toggleMaps() {
   }
 }
 toggleEvent();
-
-//code for OpenLayers Map:
-var map = new ol.Map({
-  target: 'map',
-  layers: [
-    new ol.layer.Tile({
-      source: new ol.source.OSM()
-    })
-  ],
-  view: new ol.View({
-    center: ol.proj.fromLonLat([37.41, 8.82]),
-    zoom: 4
-  })
-});
