@@ -28,7 +28,7 @@ var data = [
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
 var parkCode; //to keep queryURL from throwing an error
 
-//NPI API Function
+//NPS API Function
 function parkApi() {
   var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" + "ande" + "&api_key=" + APIKey;
   fetch(queryURL)
@@ -44,28 +44,24 @@ function parkApi() {
 
     .then(function (data) {
       console.log(data);
+
+      nameLocation.textContent = data.data[0].fullName;
+      descLocation.textContent = data.data[0].description;
+      urlLocation.innerHTML =  "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
+      hoursLocation.textContent = data.data[0].operatingHours[0].description;
+      feeLocation.textContent = data.data[0].entranceFees[0].description;
+      directLocation.textContent = data.data[0].directionsInfo;
+      //imageLocation.innerHTML = "<img src=" + data[0].images[0].url + ">";
+
+      npsDataDisplay.append(nameLocation);
+      npsDataDisplay.append(urlLocation);
+      npsDataDisplay.append(descLocation);
+      npsDataDisplay.append(hoursLocation);
+      npsDataDisplay.append(feeLocation);
+      npsDataDisplay.append(directLocation);
+      npsDataDisplay.append(imageLocation);
     });
 }
-
-//       nameLocation.textContent = data.data[0].fullName;
-//       descLocation.textContent = data.data[0].description;
-//       urlLocation.innerHTML =  "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
-//       hoursLocation.textContent = data.data[0].operatingHours[0].description;
-//       feeLocation.textContent = data.data[0].entranceFees[0].description;
-//       directLocation.textContent = data.data[0].directionsInfo;
-//       //imageLocation.innerHTML = "<img src=" + data[0].images[0].url + ">";
-
-//       npsDataDisplay.append(nameLocation);
-//       npsDataDisplay.append(urlLocation);
-//       npsDataDisplay.append(descLocation);
-//       npsDataDisplay.append(hoursLocation);
-//       npsDataDisplay.append(feeLocation);
-//       npsDataDisplay.append(directLocation);
-//       npsDataDisplay.append(imageLocation);
-
-//     })
-// };
-
 parkApi();
 
 function getForecast() {
@@ -74,7 +70,7 @@ function getForecast() {
   //   var lat = resultsObj.lat;
   //   var lon = resultsObj.lon;
   fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?lat=32.19831758&lon=-84.12988898&units=imperial&appid=585ba3d2e5d78c9afea8cfd73fcf8a69"
+    "https://api.openweathermap.org/data/2.5/forecast?lat=32.19831758&lon=-84.12988898&units=imperial&appid=585ba3d2e5d78c9afea8cfd73fcf8a69"//<--test
     // `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=585ba3d2e5d78c9afea8cfd73fcf8a69`
   )
     .then(function (response) {
