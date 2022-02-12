@@ -1,13 +1,18 @@
-/* GA - Hikes JS */
-var searchBtn = document.getElementById("searchBtn");
-searchBtn.addEventListener("click", searchFunc);
+var searchBtn = document.getElementById("searchBtn"); // Finds the id: searchBtn to add functionality to it below.
+
+if (searchBtn) {
+  // Makes sure that the button has loaded before becoming clickable.
+  searchBtn.addEventListener("click", searchFunc);
+}
 
 function searchFunc() {
+  // Moves user out to index2.html when the search button is clicked.
   console.log("Search has been clicked.");
-  let optionVal = document.getElementsByClassName("search").getAttribute("value");
-//   let searchValue = optionEl.getAttribute("value");
+  let optionVal = this.getElementsByClassName("search");
+    // .getAttribute("value");
+  //   let searchValue = optionEl.getAttribute("value");
   console.log(optionVal);
-  getSearchInput(e, searchValue);
+  getSearchInput(optionVal);
   window.location.replace("index2.html");
 }
 
@@ -18,4 +23,7 @@ var ChattahoocheeHike = ""; // It will be attached as a child element at the bot
 
 //localStorage
 
-function getSearchInput(e, searchValue) {}
+function getSearchInput(e, optionVal) {
+    e.preventDefault();
+    console.log(optionVal);
+}
