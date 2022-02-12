@@ -38,17 +38,24 @@ var data = [
   { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail", hikeData: " is a series of historic sites that span several states moving from Georgia out west. These sites don't have dedicated hiking, but they do have several scenic walking paths." },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
-var parkCode; //to keep queryURL from throwing an error
+
+function getSearchInput() {
+  var parkCode = localStorage.getItem("parkCode");
+  console.log(parkCode);
+  parkApi(parkCode);
+}
+getSearchInput();
 var lat;
 var lon;
 
 //NPS API Function
-function parkApi() {
+function parkApi(parkCode) {
   var queryURL =
     "https://developer.nps.gov/api/v1/parks?parkCode=" +
-    "ocmu" +
+    parkCode +
     "&api_key=" +
     APIKey;
+    console.log(queryURL);
   fetch(queryURL)
     .then(function (response) {
       if (200 !== response.status) {
@@ -87,7 +94,7 @@ function parkApi() {
     });
 }
 
-parkApi();
+// parkApi();
 
 //Function to append a random image to index2.html
 function saveImages(imageData) {
