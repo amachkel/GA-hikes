@@ -3,6 +3,14 @@
   --brown: #8b5d33;
   --lt-brown: #f2cc8f;
 }
+/* arcgis map */
+#viewDiv1,
+#viewDiv2 {
+  padding: 0;
+  margin: 0;
+  height: 45vh;
+  width: 45vw;
+}
 
 body {
   font-family: "Libre Baskerville", serif;
