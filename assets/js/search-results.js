@@ -2,6 +2,10 @@
 
 //Variables to append data to page
 var npsDataDisplay = document.querySelector("#data-display");
+var npsNameDisplay = document.querySelector("#name-display");
+var npsUrlDisplay = document.querySelector("#url-display");
+var npsDataDisplayImage = document.querySelector("#data-display-image");
+var npsDataDisplaySubtext = document.querySelector("#data-display-subtext");
 var nameLocation = document.createElement("h2");
 var descLocation = document.createElement("p");
 var urlLocation = document.createElement("p");
@@ -9,33 +13,27 @@ var hoursLocation = document.createElement("p");
 var feeLocation = document.createElement("p");
 var directLocation = document.createElement("p");
 var imageLocation = document.createElement("figure");
+var captionLocation = document.createElement("figcaption");
 
 //NPS API Variables
 var data = [
   { parkCode: "ande", fullName: "Andersonville National Historic Site" },
   { parkCode: "appa", fullName: "Appalachian National Scenic Trail" },
-  {
-    parkCode: "chat",
-    fullName: "Chattahoochee River National Recreation Area",
-  },
-  {
-    parkCode: "chch",
-    fullName: "Chickamauga & Chattanooga National Military Park",
-  },
+  { parkCode: "chat", fullName: "Chattahoochee River National Recreation Area", },
+  { parkCode: "chch", fullName: "Chickamauga & Chattanooga National Military Park", },
   { parkCode: "cuis", fullName: "Cumberland Island National Seashore" },
   { parkCode: "fofr", fullName: "Fort Frederica National Monument" },
   { parkCode: "fopu", fullName: "Fort Pulaski National Monument" },
   { parkCode: "jica", fullName: "Jimmy Carter National Historical Park" },
   { parkCode: "kimo", fullName: "Kennesaw Mountain National Battlefield Park" },
-  {
-    parkCode: "malu",
-    fullName: "Martin Luther King, Jr. National Historical Park",
-  },
+  { parkCode: "malu", fullName: "Martin Luther King, Jr. National Historical Park", },
   { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park" },
   { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail" },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
 var parkCode; //to keep queryURL from throwing an error
+var lat;
+var lon;
 
 //NPS API Function
 function parkApi() {
@@ -61,21 +59,24 @@ function parkApi() {
       nameLocation.textContent = data.data[0].fullName;
       descLocation.textContent = data.data[0].description;
       urlLocation.innerHTML =
-        "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
+        "<a href='" + data.data[0].url + "'class='btn btn-dark'>National Park Service Website</a>";
       hoursLocation.textContent = data.data[0].operatingHours[0].description;
       feeLocation.textContent = data.data[0].entranceFees[0].description;
       directLocation.textContent = "Directions: " + data.data[0].directionsInfo;
 
-      npsDataDisplay.append(nameLocation);
-      npsDataDisplay.append(urlLocation);
+      npsNameDisplay.append(nameLocation);
+      npsUrlDisplay.append(urlLocation);
       npsDataDisplay.append(descLocation);
       npsDataDisplay.append(hoursLocation);
       npsDataDisplay.append(feeLocation);
       npsDataDisplay.append(directLocation);
 
+      lat = data.data[0].latitude;
+      lon = data.data[0].longitude;
+
       var imageData = data.data[0].images;
 
-      saveImages(data.data[0].images);
+      saveImages(data.data[0].images, data.data[0].latitude, data.data[0].longitude);
     });
 }
 
@@ -84,13 +85,10 @@ parkApi();
 //Function to append a random image to index2.html
 function saveImages(imageData) {
   var randomImage = imageData[Math.floor(Math.random() * imageData.length)];
-  imageLocation.innerHTML =
-    "<img src=" +
-    randomImage.url +
-    " width='500'><figcaption>" +
-    randomImage.caption +
-    "</figcaption>";
-  npsDataDisplay.append(imageLocation);
+  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='500'>";
+  captionLocation.innerHTML = randomImage.caption;
+  npsDataDisplayImage.append(imageLocation);
+  npsDataDisplaySubtext.append(captionLocation);
 }
 
 function getForecast() {
@@ -110,7 +108,7 @@ function getForecast() {
       resultsObj.forecastResults = [];
       for (let i = 0; i < 5; i++) {
         let forecastObj = {};
-        forecastObj.date = new Date(data.daily[i].dt *1000).toLocaleDateString();
+        forecastObj.date = new Date(data.daily[i].dt * 1000).toLocaleDateString();
         forecastObj.minTemp = data.daily[i].temp.min;
         forecastObj.maxTemp = data.daily[i].temp.max;
         forecastObj.img = data.daily[i].weather[0].icon;
@@ -153,7 +151,7 @@ function renderForecastData(forecastResults) {
     imgEl.innerHTML = `<img src='http://openweathermap.org/img/wn/${forecastResults[i].img}@2x.png' />`;
     popEl.textContent = `Chance of rain: ${forecastResults[i].pop}%`;
   }
-  
+
 
   return forecastCard;
 }
