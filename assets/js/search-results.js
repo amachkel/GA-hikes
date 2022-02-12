@@ -160,8 +160,6 @@ function parkApi(parkCode) {
     });
 }
 
-// parkApi();
-
 //Function to append a random image to index2.html
 function saveImages(imageData) {
   var randomImage = imageData[Math.floor(Math.random() * imageData.length)];
@@ -200,11 +198,11 @@ function getForecast(lat, lon) {
 
 
 function renderForecastData(forecastResults) {
-  let forecastCard = document.getElementById("divCard5"); //Id name for testing.
+  let forecastCard = document.getElementById("forecastCard"); //Id name for testing.
   console.log(forecastResults);
 
   for (let i = 0; i < forecastResults.length; i++) {
-    console.log(forecastResults[i]);
+    // console.log(forecastResults[i]);
     let dayDataEl = document.createElement("div");
     dayDataEl.setAttribute("class", "dayData");
     forecastCard.append(dayDataEl);
