@@ -4,6 +4,10 @@ searchBtn.addEventListener("click", searchFunc);
 
 function searchFunc() {
   console.log("Search has been clicked.");
+  let optionVal = document.getElementsByClassName("search").getAttribute("value");
+//   let searchValue = optionEl.getAttribute("value");
+  console.log(optionVal);
+  getSearchInput(e, searchValue);
   window.location.replace("index2.html");
 }
 
@@ -14,4 +18,4 @@ var ChattahoocheeHike = ""; // It will be attached as a child element at the bot
 
 //localStorage
 
-function getSearchInput() {}
+function getSearchInput(e, searchValue) {}
