@@ -132,6 +132,7 @@ function parkApi(parkCode) {
       var lon = data.data[0].longitude;
       console.log(lat + lon);
       getForecast(lat, lon);
+      renderMaps(lat, lon);
       nameLocation.textContent = data.data[0].fullName;
       descLocation.textContent = data.data[0].description;
       urlLocation.innerHTML =
@@ -156,7 +157,6 @@ function parkApi(parkCode) {
         data.data[0].latitude,
         data.data[0].longitude
       );
-      
     });
 }
 
@@ -170,11 +170,10 @@ function saveImages(imageData) {
   npsDataDisplayImage.append(imageLocation);
   npsDataDisplaySubtext.append(captionLocation);
 }
-
+// "https://api.openweathermap.org/data/2.5/onecall?lat=32.19831758&lon=-84.12988898&units=imperial&exclude=minutely,hourly&appid=585ba3d2e5d78c9afea8cfd73fcf8a69" //<--test
 function getForecast(lat, lon) {
   var resultsObj = {};
   fetch(
-    // "https://api.openweathermap.org/data/2.5/onecall?lat=32.19831758&lon=-84.12988898&units=imperial&exclude=minutely,hourly&appid=585ba3d2e5d78c9afea8cfd73fcf8a69" //<--test
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=585ba3d2e5d78c9afea8cfd73fcf8a69`
   )
     .then(function (response) {
@@ -225,8 +224,8 @@ function renderForecastData(forecastResults) {
     dayDataEl.append(imgEl);
     dayDataEl.append(popEl);
     dateEl.textContent = forecastResults[i].date;
-    minEl.textContent = forecastResults[i].minTemp;
-    maxEl.textContent = forecastResults[i].maxTemp;
+    minEl.textContent = `${forecastResults[i].minTemp}°`;
+    maxEl.textContent = `${forecastResults[i].maxTemp}°`;
     imgEl.innerHTML = `<img src='http://openweathermap.org/img/wn/${forecastResults[i].img}@2x.png' />`;
     popEl.textContent = `Chance of rain: ${forecastResults[i].pop}%`;
   }
@@ -235,52 +234,53 @@ function renderForecastData(forecastResults) {
 }
 
 //arcgis API key AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP
+function renderMaps(lat, lon) {
+  require(["esri/config", "esri/Map", "esri/views/MapView"], function (
+    esriConfig,
+    Map,
+    MapView
+  ) {
+    esriConfig.apiKey =
+      "AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP";
 
-require(["esri/config", "esri/Map", "esri/views/MapView"], function (
-  esriConfig,
-  Map,
-  MapView
-) {
-  esriConfig.apiKey =
-    "AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP";
+    var map = new Map({
+      basemap: "topo-vector", // Basemap layer
+    });
 
-  var map = new Map({
-    basemap: "topo-vector", // Basemap layer
+    var view = new MapView({
+      map: map,
+      center: [lon, lat], // temp long/lat values for testing
+      zoom: 15, // scale: 72223.819286
+      container: "viewDiv1", //Div element
+      constraints: {
+        snapToZoom: false,
+      },
+    });
   });
 
-  var view = new MapView({
-    map: map,
-    center: [-84.12988898, 32.19831758], // temp long/lat values for testing
-    zoom: 15, // scale: 72223.819286
-    container: "viewDiv1", //Div element
-    constraints: {
-      snapToZoom: false,
-    },
-  });
-});
+  require(["esri/config", "esri/Map", "esri/views/MapView"], function (
+    esriConfig,
+    Map,
+    MapView
+  ) {
+    esriConfig.apiKey =
+      "AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP";
 
-require(["esri/config", "esri/Map", "esri/views/MapView"], function (
-  esriConfig,
-  Map,
-  MapView
-) {
-  esriConfig.apiKey =
-    "AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP";
+    var map = new Map({
+      basemap: "hybrid", // Basemap layer
+    });
 
-  var map = new Map({
-    basemap: "hybrid", // Basemap layer
+    var view = new MapView({
+      map: map,
+      center: [lon, lat], // temp long/lat values for testing
+      zoom: 15, // scale: 72223.819286
+      container: "viewDiv2", //Div element
+      constraints: {
+        snapToZoom: false,
+      },
+    });
   });
-
-  var view = new MapView({
-    map: map,
-    center: [-84.12988898, 32.19831758], // temp long/lat values for testing
-    zoom: 15, // scale: 72223.819286
-    container: "viewDiv2", //Div element
-    constraints: {
-      snapToZoom: false,
-    },
-  });
-});
+}
 function toggleEvent() {
   var toggleBtnEl = document.getElementById("toggleBtn");
   toggleBtnEl.addEventListener("click", toggleMaps);
