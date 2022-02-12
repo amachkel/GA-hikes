@@ -102,10 +102,24 @@ var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
 function getSearchInput() {
   var parkCodeString = localStorage.getItem("parkCode");
   var parkCode = JSON.parse(parkCodeString);
+
   console.log(parkCode);
+  getHikeData(parkCode);
   parkApi(parkCode);
 }
 getSearchInput();
+
+function getHikeData(parkCode) {
+  for (let i = 0; i < data.length; i++) {
+    console.log(data[i].parkCode);
+    // console.log(parkCode);
+    if (parkCode == data[i].parkCode) {
+      console.log(data[i].fullName + data[i].hikeData);
+      let hikeDataEl = document.getElementById("hikeData");
+      hikeDataEl.innerHTML = data[i].fullName + data[i].hikeData;
+    }
+  }
+}
 
 //NPS API Function
 function parkApi(parkCode) {
@@ -195,7 +209,6 @@ function getForecast(lat, lon) {
       renderForecastData(resultsObj.forecastResults);
     });
 }
-
 
 function renderForecastData(forecastResults) {
   let forecastCard = document.getElementById("forecastCard"); //Id name for testing.
