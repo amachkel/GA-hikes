@@ -1,3 +1,10 @@
+var backBtn = document.getElementById('backBtn');
+backBtn.addEventListener('click', backFunc);
+function backFunc(){ // Moves user back to index.html when clicked.
+  console.log('Back has been clicked.');
+  window.location.replace("index.html");
+}
+
 //NPS GA Data Link: https://developer.nps.gov/api/v1/parks?stateCode=GA&api_key=iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK
 
 //Variables to append data to page
@@ -17,6 +24,7 @@ var captionLocation = document.createElement("figcaption");
 
 //NPS API Variables
 var data = [
+<<<<<<< HEAD
   { parkCode: "ande", fullName: "Andersonville National Historic Site" },
   { parkCode: "appa", fullName: "Appalachian National Scenic Trail" },
   { parkCode: "chat", fullName: "Chattahoochee River National Recreation Area", },
@@ -29,6 +37,20 @@ var data = [
   { parkCode: "malu", fullName: "Martin Luther King, Jr. National Historical Park", },
   { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park" },
   { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail" },
+=======
+  { parkCode: "ande", fullName: "Andersonville National Historic Site", hikeData: "Andersonville is a historic site and does not have any dedicated hiking. It does have a few scenic walking paths." },
+  { parkCode: "appa", fullName: "Appalachian National Scenic Trail", hikeData: " has over 100 miles of hiking trails which continue all the way up to Maine." },
+  { parkCode: "chat", fullName: "Chattahoochee River National Recreation Area", hikeData: " is a collection of connected parks. As a whole, the park as just over 50 miles of walking paths and easy trails." },
+  { parkCode: "chch", fullName: "Chickamauga & Chattanooga National Military Park", hikeData: " has just over 45 miles of hiking trails which take you through the battlefields." },
+  { parkCode: "cuis", fullName: "Cumberland Island National Seashore", hikeData: " has several flat walking paths across the island. In total is has about 27 miles of hiking." },
+  { parkCode: "fofr", fullName: "Fort Frederica National Monument", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
+  { parkCode: "fopu", fullName: "Fort Pulaski National Monument", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
+  { parkCode: "jica", fullName: "Jimmy Carter National Historical Park", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
+  { parkCode: "kimo", fullName: "Kennesaw Mountain National Battlefield Park", hikeData: " has just over 40 miles of hiking trails that take you up and around the mountain." },
+  { parkCode: "malu", fullName: "Martin Luther King, Jr. National Historical Park", hikeData: " is a historic park and doesn't have any dedicated hiking." },
+  { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
+  { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail", hikeData: " is a series of historic sites that span several states moving from Georgia out west. These sites don't have dedicated hiking, but they do have several scenic walking paths." },
+>>>>>>> 5aa8f71c87fbf765e611100554d536934311d732
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
 var parkCode; //to keep queryURL from throwing an error
