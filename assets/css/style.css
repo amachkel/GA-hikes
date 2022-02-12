@@ -3,6 +3,14 @@
   --brown: #8b5d33;
   --lt-brown: #f2cc8f;
 }
+/* arcgis map */
+#viewDiv1,
+#viewDiv2 {
+  padding: 0;
+  margin: 0;
+  height: 45vh;
+  width: 45vw;
+}
 
 body {
   font-family: "Libre Baskerville", serif;
@@ -11,13 +19,15 @@ body {
 p.jumbo-text {
   font-size: 36px;
 }
+
 .title {
   display: inline-block;
   justify-content: center;
 }
 
 .navbar-brand {
-  font-size: 25px;
+
+    font-size: 25px;
 }
 
 .background-jumbo {
@@ -47,3 +57,10 @@ p.jumbo-text {
   height: 100vh;
 }
 
+<<<<<<< HEAD
+=======
+.map {
+  height: 400px;
+  width: 100%;
+}
+>>>>>>> c4b77274b7f03c022c6d583b6f909d1a2c805376
