@@ -197,7 +197,7 @@ function getForecast(lat, lon) {
       renderForecastData(resultsObj.forecastResults);
     });
 }
-getForecast();
+
 
 function renderForecastData(forecastResults) {
   let forecastCard = document.getElementById("divCard5"); //Id name for testing.
