@@ -12,27 +12,18 @@ var imageLocation = document.createElement("figure");
 
 //NPS API Variables
 var data = [
-  { parkCode: "ande", fullName: "Andersonville National Historic Site" },
-  { parkCode: "appa", fullName: "Appalachian National Scenic Trail" },
-  {
-    parkCode: "chat",
-    fullName: "Chattahoochee River National Recreation Area",
-  },
-  {
-    parkCode: "chch",
-    fullName: "Chickamauga & Chattanooga National Military Park",
-  },
-  { parkCode: "cuis", fullName: "Cumberland Island National Seashore" },
-  { parkCode: "fofr", fullName: "Fort Frederica National Monument" },
-  { parkCode: "fopu", fullName: "Fort Pulaski National Monument" },
-  { parkCode: "jica", fullName: "Jimmy Carter National Historical Park" },
-  { parkCode: "kimo", fullName: "Kennesaw Mountain National Battlefield Park" },
-  {
-    parkCode: "malu",
-    fullName: "Martin Luther King, Jr. National Historical Park",
-  },
-  { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park" },
-  { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail" },
+  { parkCode: "ande", fullName: "Andersonville National Historic Site", hikeData: fullName + " is a historic site and does not have any dedicated hiking. It does have several scenic walking paths." },
+  { parkCode: "appa", fullName: "Appalachian National Scenic Trail", hikeData: fullName + " has over 100 miles of hiking trails which continue all the way up to Maine." },
+  { parkCode: "chat", fullName: "Chattahoochee River National Recreation Area", hikeData: fullName + " is a collection of connected parks. As a whole, the park as just over 50 miles of walking paths and easy trails." },
+  { parkCode: "chch", fullName: "Chickamauga & Chattanooga National Military Park", hikeData: fullName + " " },
+  { parkCode: "cuis", fullName: "Cumberland Island National Seashore", hikeData: fullName + " " },
+  { parkCode: "fofr", fullName: "Fort Frederica National Monument", hikeData: fullName + " " },
+  { parkCode: "fopu", fullName: "Fort Pulaski National Monument", hikeData: fullName + " " },
+  { parkCode: "jica", fullName: "Jimmy Carter National Historical Park", hikeData: fullName + " " },
+  { parkCode: "kimo", fullName: "Kennesaw Mountain National Battlefield Park", hikeData: fullName + " " },
+  { parkCode: "malu", fullName: "Martin Luther King, Jr. National Historical Park", hikeData: fullName + " " },
+  { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park", hikeData: fullName + " " },
+  { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail", hikeData: fullName + " " },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
 var parkCode; //to keep queryURL from throwing an error
