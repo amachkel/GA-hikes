@@ -14,24 +14,36 @@ var imageLocation = document.createElement("figure");
 var data = [
   { parkCode: "ande", fullName: "Andersonville National Historic Site" },
   { parkCode: "appa", fullName: "Appalachian National Scenic Trail" },
-  { parkCode: "chat", fullName: "Chattahoochee River National Recreation Area", },
-  { parkCode: "chch", fullName: "Chickamauga & Chattanooga National Military Park", },
+  {
+    parkCode: "chat",
+    fullName: "Chattahoochee River National Recreation Area",
+  },
+  {
+    parkCode: "chch",
+    fullName: "Chickamauga & Chattanooga National Military Park",
+  },
   { parkCode: "cuis", fullName: "Cumberland Island National Seashore" },
   { parkCode: "fofr", fullName: "Fort Frederica National Monument" },
   { parkCode: "fopu", fullName: "Fort Pulaski National Monument" },
   { parkCode: "jica", fullName: "Jimmy Carter National Historical Park" },
   { parkCode: "kimo", fullName: "Kennesaw Mountain National Battlefield Park" },
-  { parkCode: "malu", fullName: "Martin Luther King, Jr. National Historical Park", },
+  {
+    parkCode: "malu",
+    fullName: "Martin Luther King, Jr. National Historical Park",
+  },
   { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park" },
   { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail" },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
-
-var parkCode; //to keep line 35 from throwing an error
+var parkCode; //to keep queryURL from throwing an error
 
 //NPS API Function
 function parkApi() {
-  var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" + "ocmu" + "&api_key=" + APIKey;
+  var queryURL =
+    "https://developer.nps.gov/api/v1/parks?parkCode=" +
+    "ocmu" +
+    "&api_key=" +
+    APIKey;
   fetch(queryURL)
     .then(function (response) {
       if (200 !== response.status) {
@@ -48,10 +60,11 @@ function parkApi() {
 
       nameLocation.textContent = data.data[0].fullName;
       descLocation.textContent = data.data[0].description;
-      urlLocation.innerHTML = "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
+      urlLocation.innerHTML =
+        "<a href='" + data.data[0].url + "'>Link to NPS Park Site</a>";
       hoursLocation.textContent = data.data[0].operatingHours[0].description;
       feeLocation.textContent = data.data[0].entranceFees[0].description;
-      directLocation.textContent = "Directions: "+ data.data[0].directionsInfo;
+      directLocation.textContent = "Directions: " + data.data[0].directionsInfo;
 
       npsDataDisplay.append(nameLocation);
       npsDataDisplay.append(urlLocation);
@@ -63,17 +76,22 @@ function parkApi() {
       var imageData = data.data[0].images;
 
       saveImages(data.data[0].images);
-    })
-};
+    });
+}
 
 parkApi();
 
 //Function to append a random image to index2.html
 function saveImages(imageData) {
   var randomImage = imageData[Math.floor(Math.random() * imageData.length)];
-  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='500'><figcaption>" + randomImage.caption + "</figcaption>";
+  imageLocation.innerHTML =
+    "<img src=" +
+    randomImage.url +
+    " width='500'><figcaption>" +
+    randomImage.caption +
+    "</figcaption>";
   npsDataDisplay.append(imageLocation);
-};
+}
 
 function getForecast() {
   var resultsObj = {};
@@ -81,8 +99,8 @@ function getForecast() {
   //   var lat = resultsObj.lat;
   //   var lon = resultsObj.lon;
   fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?lat=32.19831758&lon=-84.12988898&units=imperial&appid=585ba3d2e5d78c9afea8cfd73fcf8a69"
-    // `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=585ba3d2e5d78c9afea8cfd73fcf8a69`
+    "https://api.openweathermap.org/data/2.5/onecall?lat=32.19831758&lon=-84.12988898&units=imperial&exclude=minutely,hourly&appid=585ba3d2e5d78c9afea8cfd73fcf8a69" //<--test
+    // `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=585ba3d2e5d78c9afea8cfd73fcf8a69`
   )
     .then(function (response) {
       return response.json();
@@ -92,19 +110,55 @@ function getForecast() {
       resultsObj.forecastResults = [];
       for (let i = 0; i < 5; i++) {
         let forecastObj = {};
-        forecastObj.date = data.list[i].dt_txt;
-        forecastObj.minTemp = data.list[i].main.temp_min;
-        forecastObj.maxTemp = data.list[i].main.temp_max;
-        forecastObj.img = data.list[i].weather[0].icon;
-        forecastObj.desc = data.list[i].weather[0].description;
+        forecastObj.date = new Date(data.daily[i].dt *1000).toLocaleDateString();
+        forecastObj.minTemp = data.daily[i].temp.min;
+        forecastObj.maxTemp = data.daily[i].temp.max;
+        forecastObj.img = data.daily[i].weather[0].icon;
+        forecastObj.pop = data.daily[i].pop;
         resultsObj.forecastResults.push(forecastObj);
       }
-      console.log(resultsObj.forecastResults);
+      // console.log(resultsObj.forecastResults);
+      renderForecastData(resultsObj.forecastResults);
     });
 }
 getForecast();
 
-//arcgis(potential maps API) key AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP
+function renderForecastData(forecastResults) {
+  let forecastCard = document.getElementById("divCard5"); //Id name for testing.
+  console.log(forecastResults);
+
+  for (let i = 0; i < forecastResults.length; i++) {
+    console.log(forecastResults[i]);
+    let dayDataEl = document.createElement("div");
+    dayDataEl.setAttribute("class", "dayData");
+    forecastCard.append(dayDataEl);
+    let dateEl = document.createElement("p");
+    let minEl = document.createElement("p");
+    let maxEl = document.createElement("p");
+    let imgEl = document.createElement("p");
+    let popEl = document.createElement("p");
+    dateEl.setAttribute("class", "dateVal");
+    minEl.setAttribute("class", "minTempVal");
+    maxEl.setAttribute("class", "maxTempVal");
+    imgEl.setAttribute("class", "image");
+    popEl.setAttribute("class", "description");
+    dayDataEl.append(dateEl);
+    dayDataEl.append(minEl);
+    dayDataEl.append(maxEl);
+    dayDataEl.append(imgEl);
+    dayDataEl.append(popEl);
+    dateEl.textContent = forecastResults[i].date;
+    minEl.textContent = forecastResults[i].minTemp;
+    maxEl.textContent = forecastResults[i].maxTemp;
+    imgEl.innerHTML = `<img src='http://openweathermap.org/img/wn/${forecastResults[i].img}@2x.png' />`;
+    popEl.textContent = `Chance of rain: ${forecastResults[i].pop}%`;
+  }
+  
+
+  return forecastCard;
+}
+
+//arcgis API key AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP
 
 require(["esri/config", "esri/Map", "esri/views/MapView"], function (
   esriConfig,
