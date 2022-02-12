@@ -111,7 +111,7 @@ getSearchInput();
 
 function getHikeData(parkCode) {
   for (let i = 0; i < data.length; i++) {
-    console.log(data[i].parkCode);
+    // console.log(data[i].parkCode);
     // console.log(parkCode);
     if (parkCode == data[i].parkCode) {
       console.log(data[i].fullName + data[i].hikeData);
