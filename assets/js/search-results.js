@@ -98,11 +98,6 @@ var data = [
   },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
-<<<<<<< HEAD
-var parkCode; //to keep queryURL from throwing an error
-var lat;
-var lon;
-=======
 
 function getSearchInput() {
   var parkCodeString = localStorage.getItem("parkCode");
@@ -125,7 +120,6 @@ function getHikeData(parkCode) {
     }
   }
 }
->>>>>>> 72c5b62a81a23a76fa06f7d3a010bdab92ff6ee1
 
 //NPS API Function
 function parkApi(parkCode) {
@@ -156,13 +150,7 @@ function parkApi(parkCode) {
       nameLocation.textContent = data.data[0].fullName;
       descLocation.textContent = data.data[0].description;
       urlLocation.innerHTML =
-<<<<<<< HEAD
         "<a href='" + data.data[0].url + "'class='btn btn-dark'>National Park Service Website</a>";
-=======
-        "<a href='" +
-        data.data[0].url +
-        "'class='btn btn-dark'>National Park Service Website</a>";
->>>>>>> 72c5b62a81a23a76fa06f7d3a010bdab92ff6ee1
       hoursLocation.textContent = data.data[0].operatingHours[0].description;
       feeLocation.textContent = data.data[0].entranceFees[0].description;
       directLocation.textContent = "Directions: " + data.data[0].directionsInfo;
@@ -179,23 +167,19 @@ function parkApi(parkCode) {
 
       var imageData = data.data[0].images;
 
-<<<<<<< HEAD
-      saveImages(data.data[0].images, data.data[0].latitude, data.data[0].longitude);
-=======
       saveImages(
         data.data[0].images,
         data.data[0].latitude,
         data.data[0].longitude
       );
->>>>>>> 72c5b62a81a23a76fa06f7d3a010bdab92ff6ee1
     });
 }
 
 //Function to append a random image to index2.html
 function saveImages(imageData) {
   var randomImage = imageData[Math.floor(Math.random() * imageData.length)];
-  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='500'>";
-  captionLocation.innerHTML = randomImage.caption;
+  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='400' class='rounded img-fluid img-thumbnail mx-auto d-block'>";
+  captionLocation.innerHTML = "<p class='text-center'>" + randomImage.caption + "</p>";
   npsDataDisplayImage.append(imageLocation);
   npsDataDisplaySubtext.append(captionLocation);
 }
@@ -213,13 +197,9 @@ function getForecast(lat, lon) {
       resultsObj.forecastResults = [];
       for (let i = 0; i < 5; i++) {
         let forecastObj = {};
-<<<<<<< HEAD
-        forecastObj.date = new Date(data.daily[i].dt * 1000).toLocaleDateString();
-=======
         forecastObj.date = new Date(
           data.daily[i].dt * 1000
         ).toLocaleDateString();
->>>>>>> 72c5b62a81a23a76fa06f7d3a010bdab92ff6ee1
         forecastObj.minTemp = data.daily[i].temp.min;
         forecastObj.maxTemp = data.daily[i].temp.max;
         forecastObj.img = data.daily[i].weather[0].icon;
@@ -261,10 +241,6 @@ function renderForecastData(forecastResults) {
     imgEl.innerHTML = `<img src='./assets/icons/${forecastResults[i].img}.png' />`;
     popEl.textContent = `Chance of rain: ${forecastResults[i].pop}%`;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 72c5b62a81a23a76fa06f7d3a010bdab92ff6ee1
 
   return forecastCard;
 }
