@@ -1,7 +1,8 @@
-var backBtn = document.getElementById('backBtn');
-backBtn.addEventListener('click', backFunc);
-function backFunc(){ // Moves user back to index.html when clicked.
-  console.log('Back has been clicked.');
+var backBtn = document.getElementById("backBtn");
+backBtn.addEventListener("click", backFunc);
+function backFunc() {
+  // Moves user back to index.html when clicked.
+  console.log("Back has been clicked.");
   window.location.replace("index.html");
 }
 
@@ -24,46 +25,110 @@ var captionLocation = document.createElement("figcaption");
 
 //NPS API Variables
 var data = [
-<<<<<<< HEAD
-  { parkCode: "ande", fullName: "Andersonville National Historic Site" },
-  { parkCode: "appa", fullName: "Appalachian National Scenic Trail" },
-  { parkCode: "chat", fullName: "Chattahoochee River National Recreation Area", },
-  { parkCode: "chch", fullName: "Chickamauga & Chattanooga National Military Park", },
-  { parkCode: "cuis", fullName: "Cumberland Island National Seashore" },
-  { parkCode: "fofr", fullName: "Fort Frederica National Monument" },
-  { parkCode: "fopu", fullName: "Fort Pulaski National Monument" },
-  { parkCode: "jica", fullName: "Jimmy Carter National Historical Park" },
-  { parkCode: "kimo", fullName: "Kennesaw Mountain National Battlefield Park" },
-  { parkCode: "malu", fullName: "Martin Luther King, Jr. National Historical Park", },
-  { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park" },
-  { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail" },
-=======
-  { parkCode: "ande", fullName: "Andersonville National Historic Site", hikeData: "Andersonville is a historic site and does not have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "appa", fullName: "Appalachian National Scenic Trail", hikeData: " has over 100 miles of hiking trails which continue all the way up to Maine." },
-  { parkCode: "chat", fullName: "Chattahoochee River National Recreation Area", hikeData: " is a collection of connected parks. As a whole, the park as just over 50 miles of walking paths and easy trails." },
-  { parkCode: "chch", fullName: "Chickamauga & Chattanooga National Military Park", hikeData: " has just over 45 miles of hiking trails which take you through the battlefields." },
-  { parkCode: "cuis", fullName: "Cumberland Island National Seashore", hikeData: " has several flat walking paths across the island. In total is has about 27 miles of hiking." },
-  { parkCode: "fofr", fullName: "Fort Frederica National Monument", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "fopu", fullName: "Fort Pulaski National Monument", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "jica", fullName: "Jimmy Carter National Historical Park", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "kimo", fullName: "Kennesaw Mountain National Battlefield Park", hikeData: " has just over 40 miles of hiking trails that take you up and around the mountain." },
-  { parkCode: "malu", fullName: "Martin Luther King, Jr. National Historical Park", hikeData: " is a historic park and doesn't have any dedicated hiking." },
-  { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail", hikeData: " is a series of historic sites that span several states moving from Georgia out west. These sites don't have dedicated hiking, but they do have several scenic walking paths." },
->>>>>>> 5aa8f71c87fbf765e611100554d536934311d732
+  {
+    parkCode: "ande",
+    fullName: "Andersonville National Historic Site",
+    hikeData:
+      "Andersonville is a historic site and does not have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "appa",
+    fullName: "Appalachian National Scenic Trail",
+    hikeData:
+      " has over 100 miles of hiking trails which continue all the way up to Maine.",
+  },
+  {
+    parkCode: "chat",
+    fullName: "Chattahoochee River National Recreation Area",
+    hikeData:
+      " is a collection of connected parks. As a whole, the park as just over 50 miles of walking paths and easy trails.",
+  },
+  {
+    parkCode: "chch",
+    fullName: "Chickamauga & Chattanooga National Military Park",
+    hikeData:
+      " has just over 45 miles of hiking trails which take you through the battlefields.",
+  },
+  {
+    parkCode: "cuis",
+    fullName: "Cumberland Island National Seashore",
+    hikeData:
+      " has several flat walking paths across the island. In total is has about 27 miles of hiking.",
+  },
+  {
+    parkCode: "fofr",
+    fullName: "Fort Frederica National Monument",
+    hikeData:
+      " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "fopu",
+    fullName: "Fort Pulaski National Monument",
+    hikeData:
+      " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "jica",
+    fullName: "Jimmy Carter National Historical Park",
+    hikeData:
+      " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "kimo",
+    fullName: "Kennesaw Mountain National Battlefield Park",
+    hikeData:
+      " has just over 40 miles of hiking trails that take you up and around the mountain.",
+  },
+  {
+    parkCode: "malu",
+    fullName: "Martin Luther King, Jr. National Historical Park",
+    hikeData: " is a historic park and doesn't have any dedicated hiking.",
+  },
+  {
+    parkCode: "ocmu",
+    fullName: "Ocmulgee Mounds National Historical Park",
+    hikeData:
+      " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "trte",
+    fullName: "Trail Of Tears National Historic Trail",
+    hikeData:
+      " is a series of historic sites that span several states moving from Georgia out west. These sites don't have dedicated hiking, but they do have several scenic walking paths.",
+  },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
-var parkCode; //to keep queryURL from throwing an error
-var lat;
-var lon;
+
+function getSearchInput() {
+  var parkCodeString = localStorage.getItem("parkCode");
+  var parkCode = JSON.parse(parkCodeString);
+
+  console.log(parkCode);
+  getHikeData(parkCode);
+  parkApi(parkCode);
+}
+getSearchInput();
+
+function getHikeData(parkCode) {
+  for (let i = 0; i < data.length; i++) {
+    // console.log(data[i].parkCode);
+    // console.log(parkCode);
+    if (parkCode == data[i].parkCode) {
+      console.log(data[i].fullName + data[i].hikeData);
+      let hikeDataEl = document.getElementById("hikeData");
+      hikeDataEl.innerHTML = data[i].fullName + data[i].hikeData;
+    }
+  }
+}
 
 //NPS API Function
-function parkApi() {
+function parkApi(parkCode) {
   var queryURL =
     "https://developer.nps.gov/api/v1/parks?parkCode=" +
-    "ocmu" +
+    parkCode +
     "&api_key=" +
     APIKey;
+  console.log(queryURL);
   fetch(queryURL)
     .then(function (response) {
       if (200 !== response.status) {
@@ -77,11 +142,17 @@ function parkApi() {
 
     .then(function (data) {
       console.log(data);
-
+      var lat = data.data[0].latitude;
+      var lon = data.data[0].longitude;
+      console.log(lat + lon);
+      getForecast(lat, lon);
+      renderMaps(lat, lon);
       nameLocation.textContent = data.data[0].fullName;
       descLocation.textContent = data.data[0].description;
       urlLocation.innerHTML =
-        "<a href='" + data.data[0].url + "'class='btn btn-dark'>National Park Service Website</a>";
+        "<a href='" +
+        data.data[0].url +
+        "'class='btn btn-dark'>National Park Service Website</a>";
       hoursLocation.textContent = data.data[0].operatingHours[0].description;
       feeLocation.textContent = data.data[0].entranceFees[0].description;
       directLocation.textContent = "Directions: " + data.data[0].directionsInfo;
@@ -93,16 +164,15 @@ function parkApi() {
       npsDataDisplay.append(feeLocation);
       npsDataDisplay.append(directLocation);
 
-      lat = data.data[0].latitude;
-      lon = data.data[0].longitude;
-
       var imageData = data.data[0].images;
 
-      saveImages(data.data[0].images, data.data[0].latitude, data.data[0].longitude);
+      saveImages(
+        data.data[0].images,
+        data.data[0].latitude,
+        data.data[0].longitude
+      );
     });
 }
-
-parkApi();
 
 //Function to append a random image to index2.html
 function saveImages(imageData) {
@@ -112,15 +182,11 @@ function saveImages(imageData) {
   npsDataDisplayImage.append(imageLocation);
   npsDataDisplaySubtext.append(captionLocation);
 }
-
-function getForecast() {
+// "https://api.openweathermap.org/data/2.5/onecall?lat=32.19831758&lon=-84.12988898&units=imperial&exclude=minutely,hourly&appid=585ba3d2e5d78c9afea8cfd73fcf8a69" //<--test
+function getForecast(lat, lon) {
   var resultsObj = {};
-
-  //   var lat = resultsObj.lat;
-  //   var lon = resultsObj.lon;
   fetch(
-    "https://api.openweathermap.org/data/2.5/onecall?lat=32.19831758&lon=-84.12988898&units=imperial&exclude=minutely,hourly&appid=585ba3d2e5d78c9afea8cfd73fcf8a69" //<--test
-    // `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=585ba3d2e5d78c9afea8cfd73fcf8a69`
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=585ba3d2e5d78c9afea8cfd73fcf8a69`
   )
     .then(function (response) {
       return response.json();
@@ -130,7 +196,9 @@ function getForecast() {
       resultsObj.forecastResults = [];
       for (let i = 0; i < 5; i++) {
         let forecastObj = {};
-        forecastObj.date = new Date(data.daily[i].dt * 1000).toLocaleDateString();
+        forecastObj.date = new Date(
+          data.daily[i].dt * 1000
+        ).toLocaleDateString();
         forecastObj.minTemp = data.daily[i].temp.min;
         forecastObj.maxTemp = data.daily[i].temp.max;
         forecastObj.img = data.daily[i].weather[0].icon;
@@ -141,14 +209,13 @@ function getForecast() {
       renderForecastData(resultsObj.forecastResults);
     });
 }
-getForecast();
 
 function renderForecastData(forecastResults) {
-  let forecastCard = document.getElementById("divCard5"); //Id name for testing.
+  let forecastCard = document.getElementById("forecastCard"); //Id name for testing.
   console.log(forecastResults);
 
   for (let i = 0; i < forecastResults.length; i++) {
-    console.log(forecastResults[i]);
+    // console.log(forecastResults[i]);
     let dayDataEl = document.createElement("div");
     dayDataEl.setAttribute("class", "dayData");
     forecastCard.append(dayDataEl);
@@ -168,63 +235,63 @@ function renderForecastData(forecastResults) {
     dayDataEl.append(imgEl);
     dayDataEl.append(popEl);
     dateEl.textContent = forecastResults[i].date;
-    minEl.textContent = forecastResults[i].minTemp;
-    maxEl.textContent = forecastResults[i].maxTemp;
-    imgEl.innerHTML = `<img src='http://openweathermap.org/img/wn/${forecastResults[i].img}@2x.png' />`;
+    minEl.textContent = `${forecastResults[i].minTemp}°`;
+    maxEl.textContent = `${forecastResults[i].maxTemp}°`;
+    imgEl.innerHTML = `<img src='./assets/icons/${forecastResults[i].img}.png' />`;
     popEl.textContent = `Chance of rain: ${forecastResults[i].pop}%`;
   }
-
 
   return forecastCard;
 }
 
 //arcgis API key AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP
+function renderMaps(lat, lon) {
+  require(["esri/config", "esri/Map", "esri/views/MapView"], function (
+    esriConfig,
+    Map,
+    MapView
+  ) {
+    esriConfig.apiKey =
+      "AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP";
 
-require(["esri/config", "esri/Map", "esri/views/MapView"], function (
-  esriConfig,
-  Map,
-  MapView
-) {
-  esriConfig.apiKey =
-    "AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP";
+    var map = new Map({
+      basemap: "topo-vector", // Basemap layer
+    });
 
-  var map = new Map({
-    basemap: "topo-vector", // Basemap layer
+    var view = new MapView({
+      map: map,
+      center: [lon, lat], // temp long/lat values for testing
+      zoom: 15, // scale: 72223.819286
+      container: "viewDiv1", //Div element
+      constraints: {
+        snapToZoom: false,
+      },
+    });
   });
 
-  var view = new MapView({
-    map: map,
-    center: [-84.12988898, 32.19831758], // temp long/lat values for testing
-    zoom: 15, // scale: 72223.819286
-    container: "viewDiv1", //Div element
-    constraints: {
-      snapToZoom: false,
-    },
-  });
-});
+  require(["esri/config", "esri/Map", "esri/views/MapView"], function (
+    esriConfig,
+    Map,
+    MapView
+  ) {
+    esriConfig.apiKey =
+      "AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP";
 
-require(["esri/config", "esri/Map", "esri/views/MapView"], function (
-  esriConfig,
-  Map,
-  MapView
-) {
-  esriConfig.apiKey =
-    "AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP";
+    var map = new Map({
+      basemap: "hybrid", // Basemap layer
+    });
 
-  var map = new Map({
-    basemap: "hybrid", // Basemap layer
+    var view = new MapView({
+      map: map,
+      center: [lon, lat],
+      zoom: 15, // scale: 72223.819286
+      container: "viewDiv2", //Div element
+      constraints: {
+        snapToZoom: false,
+      },
+    });
   });
-
-  var view = new MapView({
-    map: map,
-    center: [-84.12988898, 32.19831758], // temp long/lat values for testing
-    zoom: 15, // scale: 72223.819286
-    container: "viewDiv2", //Div element
-    constraints: {
-      snapToZoom: false,
-    },
-  });
-});
+}
 function toggleEvent() {
   var toggleBtnEl = document.getElementById("toggleBtn");
   toggleBtnEl.addEventListener("click", toggleMaps);
