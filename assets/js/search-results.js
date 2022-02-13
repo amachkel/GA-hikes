@@ -150,9 +150,7 @@ function parkApi(parkCode) {
       nameLocation.textContent = data.data[0].fullName;
       descLocation.textContent = data.data[0].description;
       urlLocation.innerHTML =
-        "<a href='" +
-        data.data[0].url +
-        "'class='btn btn-dark'>National Park Service Website</a>";
+        "<a href='" + data.data[0].url + "'class='btn btn-dark'>National Park Service Website</a>";
       hoursLocation.textContent = data.data[0].operatingHours[0].description;
       feeLocation.textContent = data.data[0].entranceFees[0].description;
       directLocation.textContent = "Directions: " + data.data[0].directionsInfo;
@@ -163,6 +161,9 @@ function parkApi(parkCode) {
       npsDataDisplay.append(hoursLocation);
       npsDataDisplay.append(feeLocation);
       npsDataDisplay.append(directLocation);
+
+      lat = data.data[0].latitude;
+      lon = data.data[0].longitude;
 
       var imageData = data.data[0].images;
 
@@ -177,8 +178,8 @@ function parkApi(parkCode) {
 //Function to append a random image to index2.html
 function saveImages(imageData) {
   var randomImage = imageData[Math.floor(Math.random() * imageData.length)];
-  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='500'>";
-  captionLocation.innerHTML = randomImage.caption;
+  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='400' class='rounded img-fluid img-thumbnail mx-auto d-block'>";
+  captionLocation.innerHTML = "<p class='text-center'>" + randomImage.caption + "</p>";
   npsDataDisplayImage.append(imageLocation);
   npsDataDisplaySubtext.append(captionLocation);
 }
