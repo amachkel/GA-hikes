@@ -61,3 +61,12 @@ p.jumbo-text {
   height: 400px;
   width: 100%;
 }
+
+#forecastWrapper,
+.dayData .card-body {
+  border: 1px solid black;
+}
+
+.dayData {
+  padding: 5px;
+}
