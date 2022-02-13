@@ -238,7 +238,7 @@ function renderForecastData(forecastResults) {
     minEl.textContent = `${forecastResults[i].minTemp}°`;
     maxEl.textContent = `${forecastResults[i].maxTemp}°`;
     imgEl.innerHTML = `<img src='./assets/icons/${forecastResults[i].img}.png' />`;
-    popEl.textContent = `Chance of rain: ${forecastResults[i].pop}%`;
+    popEl.textContent = `Chance of rain: ${forecastResults[i].pop * 100}%`;
   }
 
   return forecastCard;
