@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 72c5b62a81a23a76fa06f7d3a010bdab92ff6ee1
 # Georgia Hikes
 ## Description
 Have you ever tried to go hiking in Georgia? Typically you will have a hard time trying to find trails to hike and places to park when you arrive. Our Georgia Hikes app allows users to view our interactive map that shows them where they can hike and park. This app also allows the user to view the weather for that day they are planning on getting out there!
@@ -59,11 +55,4 @@ And thanks to these tutorials:
 
 ## License
 ![MIT License](https://img.shields.io/badge/license-MIT-green)
-<<<<<<< HEAD
 
-=======
-# GA-hikes
-Amanda WOOHOO
->>>>>>> 5aa8f71c87fbf765e611100554d536934311d732
-=======
->>>>>>> 72c5b62a81a23a76fa06f7d3a010bdab92ff6ee1
