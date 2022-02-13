@@ -237,7 +237,7 @@ function renderForecastData(forecastResults) {
     dateEl.textContent = forecastResults[i].date;
     minEl.textContent = `${forecastResults[i].minTemp}°`;
     maxEl.textContent = `${forecastResults[i].maxTemp}°`;
-    imgEl.innerHTML = `<img src='http://openweathermap.org/img/wn/${forecastResults[i].img}@2x.png' />`;
+    imgEl.innerHTML = `<img src='./assets/icons/${forecastResults[i].img}.png' />`;
     popEl.textContent = `Chance of rain: ${forecastResults[i].pop}%`;
   }
 
@@ -283,7 +283,7 @@ function renderMaps(lat, lon) {
 
     var view = new MapView({
       map: map,
-      center: [lon, lat], // temp long/lat values for testing
+      center: [lon, lat],
       zoom: 15, // scale: 72223.819286
       container: "viewDiv2", //Div element
       constraints: {
