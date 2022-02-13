@@ -25,13 +25,14 @@ function searchFunc() {
 
   document.getElementById;
 
-  getSearchInput(searchItem);
+  storeSearchInput(searchItem);
   window.location.replace("index2.html");
 }
 
 //localStorage
 
-function getSearchInput(searchItem) {
+function storeSearchInput(searchItem) {
     // e.preventDefault();
+    localStorage.setItem("parkCode", JSON.stringify(searchItem));
     console.log(searchItem);
 }
