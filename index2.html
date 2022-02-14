@@ -15,38 +15,59 @@
 </head>
 
 <body>
-  <header></header>
-  <main id="data-display">
-
-    <div class="trails">
-      <img src="" class="" alt="" />
-    </div>
-
-    <div class="map">
-      <div id="mapWrapper">
-        <button type="button" id="toggleBtn" class="btn btn-dark">
-          Toggle Map View
+  <main>
+    <header>
+      <div class="card">
+        <button type="button" id="backBtn" class="btn btn-dark">
+          Go Back
         </button>
-        <div id="topo-wrapper" style="display: block">
-          <div id="viewDiv1"></div>
+        <div class="card-header card-title text-center" id="name-display"></div>
+      </div>
+    </header>
+    <div class="card px-lg-5">
+      <div class="row row-cols-2 d-flex justify-content-center">
+        <div class="card-body">
+          <div id="url-display"></div>
+          <div class="card-text" id="data-display" id="data-display"></div>
         </div>
-        <div id="hybrid-wrapper" style="display: none">
-          <div id="viewDiv2"></div>
+        <div class="card col">
+          <div class="card-body">
+            <div id="mapWrapper">
+              <button type="button" id="toggleBtn" class="btn btn-dark">
+                Toggle Map View
+              </button>
+              <div id="topo-wrapper" style="display: block">
+                <div id="viewDiv1" class="p-3"></div>
+              </div>
+              <div id="hybrid-wrapper" style="display: none">
+                <div id="viewDiv2" class="p-3"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="npsdata">
-      <img src="" class="" alt="" />
+    <div class="card px-lg-5">
+      <div class="row row-cols-2 d-flex justify-content-center">
+        <div class="card-body">
+          <div id="data-display-image"></div>
+          <div class="card-text" id="data-display-subtext"></div>
+        </div>
+        <div class="card col">
+          <div class="card-body">
+            <h5 class="card-title text-center">Hiking Availablility</h5>
+            <p class="card-text" id="hikeData">
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="forecastWrapper">
+        <h3 class="d-flex justify-content-center forecastHeader">5 Day Forecast</h3>
+        <div id="forecastCard" class="row justify-content-center"></div>
+      </div>
     </div>
 
-    <div class="npsphoto">
-      <img src="" class="" alt="" />
-    </div>
-
-
-    <div id="divCard5">
-    </div>
   </main>
   <footer></footer>
   <script src="https://js.arcgis.com/4.22//"></script>

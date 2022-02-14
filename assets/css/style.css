@@ -57,10 +57,17 @@ p.jumbo-text {
   height: 100vh;
 }
 
-<<<<<<< HEAD
-=======
 .map {
   height: 400px;
   width: 100%;
 }
->>>>>>> c4b77274b7f03c022c6d583b6f909d1a2c805376
+
+
+#forecastWrapper,
+.dayData .card-body {
+  border: 1px solid black;
+}
+
+.dayData {
+  padding: 5px;
+}
