@@ -12,27 +12,71 @@
   width: 45vw;
 }
 
-body {
+/* body {
   font-family: "Libre Baskerville", serif;
+  background-image: url("../images/Georgia\ topographic\ map.webp");
+  background-color: #e6e6e6;
+  background-size: 100%;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}  */
+body,
+html {
+  height: 100%;
+}
+
+/* .bg{
+  position: absolute;
+  top: -100px;
+  z-index: -1000;
+}
+.bg {
+  background-image: url(../images/Georgia\ topographic\ map.webp);
+  height: 5000px;
+  width: 5000px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.bg {
+  
+  background-image: url("../images/Georgia\ topographic\ map.webp");
+
+  height: 100%;
+
+ 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
+  background-color: transparent;
+}
+
+.col-sm-10 {
+  background-color: transparent;
 }
 
 p.jumbo-text {
   font-size: 36px;
 }
 
-.title {
+/* .title {
   display: inline-block;
   justify-content: center;
-}
+} */
 
 .navbar-brand {
-
-    font-size: 25px;
+  font-size: 25px;
 }
 
-.background-jumbo {
-  background-color: white;
-}
+/* .background-jumbo {
+  display: block;
+  position: relative;
+} */
 
 .jumbo-text {
   text-align: center;
@@ -47,21 +91,15 @@ p.jumbo-text {
   border: none;
 }
 .container.fixed-bottom {
-    width: 100%;
-    left:40%;
-    right:40%;
-}
-
-#main {
-  background-image: url("../images/field.jpg");
-  height: 100vh;
+  width: 100%;
+  left: 40%;
+  right: 40%;
 }
 
 .map {
   height: 400px;
   width: 100%;
 }
-
 
 #forecastWrapper,
 .dayData .card-body {
