@@ -76,7 +76,7 @@ var data = [
       " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
   },
   {
-    parkCode: "kimo",
+    parkCode: "kemo",
     fullName: "Kennesaw Mountain National Battlefield Park",
     hikeData:
       " has just over 40 miles of hiking trails that take you up and around the mountain.",
@@ -154,7 +154,10 @@ function parkApi(parkCode) {
       urlLocation.innerHTML =
         "<a href='" + data.data[0].url + "'class='btn btn-dark'>National Park Service Website</a>";
       hoursLocation.textContent = data.data[0].operatingHours[0].description;
-      feeLocation.textContent = data.data[0].entranceFees[0].description;
+      let entranceFees = data.data[0].entranceFees;
+      if (entranceFees.length !== 0) {
+        feeLocation.textContent = data.data[0].entranceFees[0].description;
+      }
       directLocation.textContent = "Directions: " + data.data[0].directionsInfo;
 
       npsNameDisplay.append(nameLocation);
