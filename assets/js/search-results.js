@@ -1,7 +1,8 @@
-var backBtn = document.getElementById('backBtn');
-backBtn.addEventListener('click', backFunc);
-function backFunc(){ // Moves user back to index.html when clicked.
-  console.log('Back has been clicked.');
+var backBtn = document.getElementById("backBtn");
+backBtn.addEventListener("click", backFunc);
+function backFunc() {
+  // Moves user back to index.html when clicked.
+  console.log("Back has been clicked.");
   window.location.replace("index.html");
 }
 
@@ -11,6 +12,7 @@ function backFunc(){ // Moves user back to index.html when clicked.
 var npsDataDisplay = document.querySelector("#data-display");
 var npsNameDisplay = document.querySelector("#name-display");
 var npsUrlDisplay = document.querySelector("#url-display");
+var npsActDisplay = document.querySelector("#act-display");
 var npsDataDisplayImage = document.querySelector("#data-display-image");
 var npsDataDisplaySubtext = document.querySelector("#data-display-subtext");
 var nameLocation = document.createElement("h2");
@@ -21,21 +23,81 @@ var feeLocation = document.createElement("p");
 var directLocation = document.createElement("p");
 var imageLocation = document.createElement("figure");
 var captionLocation = document.createElement("figcaption");
+var actLocation = document.createElement("p");
 
 //NPS API Variables
 var data = [
-  { parkCode: "ande", fullName: "Andersonville National Historic Site", hikeData: "Andersonville is a historic site and does not have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "appa", fullName: "Appalachian National Scenic Trail", hikeData: " has over 100 miles of hiking trails which continue all the way up to Maine." },
-  { parkCode: "chat", fullName: "Chattahoochee River National Recreation Area", hikeData: " is a collection of connected parks. As a whole, the park as just over 50 miles of walking paths and easy trails." },
-  { parkCode: "chch", fullName: "Chickamauga & Chattanooga National Military Park", hikeData: " has just over 45 miles of hiking trails which take you through the battlefields." },
-  { parkCode: "cuis", fullName: "Cumberland Island National Seashore", hikeData: " has several flat walking paths across the island. In total is has about 27 miles of hiking." },
-  { parkCode: "fofr", fullName: "Fort Frederica National Monument", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "fopu", fullName: "Fort Pulaski National Monument", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "jica", fullName: "Jimmy Carter National Historical Park", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "kemo", fullName: "Kennesaw Mountain National Battlefield Park", hikeData: " has just over 40 miles of hiking trails that take you up and around the mountain." },
-  { parkCode: "malu", fullName: "Martin Luther King, Jr. National Historical Park", hikeData: " is a historic park and doesn't have any dedicated hiking." },
-  { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail", hikeData: " is a series of historic sites that span several states moving from Georgia out west. These sites don't have dedicated hiking, but they do have several scenic walking paths." },
+  {
+    parkCode: "ande",
+    fullName: "Andersonville National Historic Site",
+    hikeData:
+      "Andersonville is a historic site and does not have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "appa",
+    fullName: "Appalachian National Scenic Trail",
+    hikeData:
+      " has over 100 miles of hiking trails which continue all the way up to Maine.",
+  },
+  {
+    parkCode: "chat",
+    fullName: "Chattahoochee River National Recreation Area",
+    hikeData:
+      " is a collection of connected parks. As a whole, the park as just over 50 miles of walking paths and easy trails.",
+  },
+  {
+    parkCode: "chch",
+    fullName: "Chickamauga & Chattanooga National Military Park",
+    hikeData:
+      " has just over 45 miles of hiking trails which take you through the battlefields.",
+  },
+  {
+    parkCode: "cuis",
+    fullName: "Cumberland Island National Seashore",
+    hikeData:
+      " has several flat walking paths across the island. In total is has about 27 miles of hiking.",
+  },
+  {
+    parkCode: "fofr",
+    fullName: "Fort Frederica National Monument",
+    hikeData:
+      " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "fopu",
+    fullName: "Fort Pulaski National Monument",
+    hikeData:
+      " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "jica",
+    fullName: "Jimmy Carter National Historical Park",
+    hikeData:
+      " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "kemo",
+    fullName: "Kennesaw Mountain National Battlefield Park",
+    hikeData:
+      " has just over 40 miles of hiking trails that take you up and around the mountain.",
+  },
+  {
+    parkCode: "malu",
+    fullName: "Martin Luther King, Jr. National Historical Park",
+    hikeData: " is a historic park and doesn't have any dedicated hiking.",
+  },
+  {
+    parkCode: "ocmu",
+    fullName: "Ocmulgee Mounds National Historical Park",
+    hikeData:
+      " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+  },
+  {
+    parkCode: "trte",
+    fullName: "Trail Of Tears National Historic Trail",
+    hikeData:
+      " is a series of historic sites that span several states moving from Georgia out west. These sites don't have dedicated hiking, but they do have several scenic walking paths.",
+  },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
 
@@ -110,6 +172,11 @@ function parkApi(parkCode) {
 
       var imageData = data.data[0].images;
 
+      var actData = data.data[0].activities;
+      for (i = 0; i < actData.length; i++) {
+        npsActDisplay.append(actData[i].name + "  |  ");
+      }
+
       saveImages(
         data.data[0].images,
         data.data[0].latitude,
@@ -121,11 +188,12 @@ function parkApi(parkCode) {
 //Function to append a random image to index2.html
 function saveImages(imageData) {
   var randomImage = imageData[Math.floor(Math.random() * imageData.length)];
-  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='400' class='rounded img-fluid img-thumbnail mx-auto d-block'>";
+  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='400' class='rounded img-fluid img-thumbnail mx-auto d-block' alt='" + randomImage.altText + "'>";
   captionLocation.innerHTML = "<p class='text-center'>" + randomImage.caption + "</p>";
   npsDataDisplayImage.append(imageLocation);
   npsDataDisplaySubtext.append(captionLocation);
 }
+
 // "https://api.openweathermap.org/data/2.5/onecall?lat=32.19831758&lon=-84.12988898&units=imperial&exclude=minutely,hourly&appid=585ba3d2e5d78c9afea8cfd73fcf8a69" //<--test
 function getForecast(lat, lon) {
   var resultsObj = {};
@@ -242,6 +310,7 @@ function renderMaps(lat, lon) {
     });
   });
 }
+
 function toggleEvent() {
   var toggleBtnEl = document.getElementById("toggleBtn");
   toggleBtnEl.addEventListener("click", toggleMaps);

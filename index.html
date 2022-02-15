@@ -11,83 +11,89 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <div class="bg">
-    <main role="main" class="background-jumbo" id="main">
-      <div class="card" id="main-card">
-        <div class="jumbotron">
-          <div class="container">
-            <h1 class="display-3">
-              <div class="text-center">
-                <p class="jumbo-text">Georgia Hikes</p>
-              </div>
-            </h1>
+      <main role="main" class="background-jumbo" id="main">
+        <div class="card" id="main-card">
+          <div class="jumbotron bg-transparent">
+            <div class="container">
+              <h1 class="display-3">
+                <div class="text-center">
+                  <p class="jumbo-text">GEORGIA HIKES</p>
+                </div>
+              </h1>
+            </div>
+          </div>
+          <div class="container card-p">
+            <div class="card">
+              <p>
+                Choose from the dropdown menu to display Georgia parks and their
+                hiking trails, as well as other park features. When you make a
+                selection, you will be presented with a map, a 5 day forecast,
+                and useful park information to help you plan your trip.
+              </p>
+              <form class="col-sm-10">
+                <div class="row flex-nowrap form-group">
+                  <label for="exampleFormControlSelect1"></label>
+                  <select class="form-control" id="selectPark">
+                    <option class="search" value="ande">
+                      Andersonville National Historic Site
+                    </option>
+                    <option class="search" value="appa">
+                      Appalachian National Scenic Trail
+                    </option>
+                    <option class="search" value="chat">
+                      Chattahoochee River National Recreation Area
+                    </option>
+                    <option class="search" value="chch">
+                      Chickamauga & Chattanooga National Military Park
+                    </option>
+                    <option class="search" value="cuis">
+                      Cumberland Island National Seashore
+                    </option>
+                    <option class="search" value="fofr">
+                      Fort Frederica National Monument
+                    </option>
+                    <option class="search" value="fopu">
+                      Fort Pulaski National Monument
+                    </option>
+                    <option class="search" value="jica">
+                      Jimmy Carter National Historical Park
+                    </option>
+                    <option class="search" value="kemo">
+                      Kennesaw Mountain National Battlefield Park
+                    </option>
+                    <option class="search" value="malu">
+                      Martin Luther King, Jr. National Historical Park
+                    </option>
+                    <option class="search" value="ocmu">
+                      Ocmulgee Mounds National Historical Park
+                    </option>
+                    <option class="search" value="trte">
+                      Trail of Tears National Historic Trail
+                    </option>
+                  </select>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="searchBtn"
+                  >
+                    Search
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-        <div class="container card-text">
-          <div class="card">
-            <p>
-              Choose from the dropdown menu to display Georgia parks and their
-              hiking trails, as well as other park features. You can explore
-              their difficulty levels that are color-coded for your convenience.
-              When you make a selection, you will be presented with a 5 day
-              forecast for that location.
-            </p>
-            <form class="col-sm-10">
-              <div class="row flex-nowrap form-group">
-                <label for="exampleFormControlSelect1"></label>
-                <select class="form-control" id="selectPark">
-                  <option class="search" value="ande">
-                    Andersonville National Historic Site
-                  </option>
-                  <option class="search" value="appa">
-                    Appalachian National Scenic Trail
-                  </option>
-                  <option class="search" value="chat">
-                    Chattahoochee River National Recreation Area
-                  </option>
-                  <option class="search" value="chch">
-                    Chickamauga & Chattanooga National Military Park
-                  </option>
-                  <option class="search" value="cuis">
-                    Cumberland Island National Seashore
-                  </option>
-                  <option class="search" value="fofr">
-                    Fort Frederica National Monument
-                  </option>
-                  <option class="search" value="fopu">
-                    Fort Pulaski National Monument
-                  </option>
-                  <option class="search" value="jica">
-                    Jimmy Carter National Historical Park
-                  </option>
-                  <option class="search" value="kemo">
-                    Kennesaw Mountain National Battlefield Park
-                  </option>
-                  <option class="search" value="malu">
-                    Martin Luther King, Jr. National Historical Park
-                  </option>
-                  <option class="search" value="ocmu">
-                    Ocmulgee Mounds National Historical Park
-                  </option>
-                  <option class="search" value="trte">
-                    Trail of Tears National Historic Trail
-                  </option>
-                </select>
-                <button type="button" class="btn btn-secondary" id="searchBtn">
-                  Search
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </main>
+      </main>
     </div>
 
     <footer class="container navbar fixed-bottom">

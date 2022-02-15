@@ -12,50 +12,24 @@
   width: 45vw;
 }
 
-/* body {
-  font-family: "Libre Baskerville", serif;
-  background-image: url("../images/Georgia\ topographic\ map.webp");
-  background-color: #e6e6e6;
-  background-size: 100%;
-  background-position: center top;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}  */
 body,
 html {
   height: 100%;
-  font-family: 'Cormorant', serif;
-
+  font-family: "Cormorant", serif;
 }
 
-/* .bg{
-  position: absolute;
-  top: -100px;
-  z-index: -1000;
-}
 .bg {
-  background-image: url(../images/Georgia\ topographic\ map.webp);
-  height: 5000px;
-  width: 5000px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-
-.bg {
-  
   background-image: url("../images/Georgia\ map\ copy.png");
 
   height: 100%;
 
- 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 main {
-  background-color:rgba(234, 234, 234, 0.65);
+  background-color: rgba(234, 234, 234, 0.65);
   color: black;
 }
 
@@ -65,24 +39,9 @@ main {
   margin-right: 8.5%;
 }
 
-p.jumbo-text {
-  /* font-size: 36px; */
-  /* font-size: 5rem; */
-}
-
-/* .title {
-  display: inline-block;
-  justify-content: center;
-} */
-
 .navbar-brand {
   font-size: 25px;
 }
-
-/* .background-jumbo {
-  display: block;
-  position: relative;
-} */
 
 .jumbo-text {
   text-align: center;
@@ -91,26 +50,29 @@ p.jumbo-text {
 
 .jumbotron {
   background-color: transparent;
+  padding: 5rem 2rem 0rem 2rem;
 }
+
 .card {
   background-color: transparent;
   border: none;
   text-align: center;
 }
-/* .card .jumbo-text{
-  font-size: 2rem;
-} */
-.card-text{
+
+.card-p {
   font-size: 1.5rem;
   font-weight: 700;
 }
-.form-control{
+
+.form-control {
   font-size: 1.5rem;
   text-align: center;
 }
-.btn{
+
+.btn {
   font-size: 1.5rem;
 }
+
 .container.fixed-bottom {
   width: 100%;
   left: 40%;
