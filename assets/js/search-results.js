@@ -32,7 +32,7 @@ var data = [
   { parkCode: "fofr", fullName: "Fort Frederica National Monument", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
   { parkCode: "fopu", fullName: "Fort Pulaski National Monument", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
   { parkCode: "jica", fullName: "Jimmy Carter National Historical Park", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
-  { parkCode: "kimo", fullName: "Kennesaw Mountain National Battlefield Park", hikeData: " has just over 40 miles of hiking trails that take you up and around the mountain." },
+  { parkCode: "kemo", fullName: "Kennesaw Mountain National Battlefield Park", hikeData: " has just over 40 miles of hiking trails that take you up and around the mountain." },
   { parkCode: "malu", fullName: "Martin Luther King, Jr. National Historical Park", hikeData: " is a historic park and doesn't have any dedicated hiking." },
   { parkCode: "ocmu", fullName: "Ocmulgee Mounds National Historical Park", hikeData: " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths." },
   { parkCode: "trte", fullName: "Trail Of Tears National Historic Trail", hikeData: " is a series of historic sites that span several states moving from Georgia out west. These sites don't have dedicated hiking, but they do have several scenic walking paths." },
@@ -92,7 +92,10 @@ function parkApi(parkCode) {
       urlLocation.innerHTML =
         "<a href='" + data.data[0].url + "'class='btn btn-dark'>National Park Service Website</a>";
       hoursLocation.textContent = data.data[0].operatingHours[0].description;
-      feeLocation.textContent = data.data[0].entranceFees[0].description;
+      let entranceFees = data.data[0].entranceFees;
+      if (entranceFees.length !== 0) {
+        feeLocation.textContent = data.data[0].entranceFees[0].description;
+      }
       directLocation.textContent = "Directions: " + data.data[0].directionsInfo;
 
       npsNameDisplay.append(nameLocation);

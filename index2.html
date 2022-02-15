@@ -7,7 +7,9 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Georgia Hikes - Page2</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://js.arcgis.com/4.22//esri/themes/light/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
@@ -18,10 +20,10 @@
   <main>
     <header>
       <div class="card">
-        <button type="button" id="backBtn" class="btn btn-dark">
+        <button type="button" id="backBtn" class="btn btn-dark text-info">
           Go Back
         </button>
-        <div class="card-header card-title text-center" id="name-display"></div>
+        <div class="card-header card-title text-center shadow p-3 mb-5 bg-white rounded font-weight-bold text-capitalize" id="name-display"></div>
       </div>
     </header>
     <div class="card px-lg-5">
@@ -63,8 +65,8 @@
         </div>
       </div>
       <div id="forecastWrapper">
-        <h3 class="d-flex justify-content-center forecastHeader">5 Day Forecast</h3>
-        <div id="forecastCard" class="row justify-content-center"></div>
+        <h3 class="d-flex justify-content-center forecastHeader font-weight-bolder text-info rounded">5 Day Forecast</h3>
+        <div id="forecastCard" class="row justify-content-center forecastHeader font-weight-bolder text-info rounded"></div>
       </div>
     </div>
 
@@ -73,5 +75,3 @@
   <script src="https://js.arcgis.com/4.22//"></script>
   <script src="assets/js/search-results.js"></script>
 </body>
-
-</html>
