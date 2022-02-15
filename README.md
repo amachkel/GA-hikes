@@ -15,7 +15,9 @@ Please visit our app Georgia Hikes if you are interested in hiking Georgia's top
 - [License](#license)
 
 ## Usage
-Visit the [Georgia Hikes application here](). The following animation shows the web application's appearance and functionality:
+Visit the [Georgia Hikes application here](https://amachkel.github.io/GA-hikes/).
+
+ The following animation shows the web application's appearance and functionality:
 
 ![GIF of Completed Website](assets/images/ga-hikes-screenshot.gif)
 
