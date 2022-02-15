@@ -12,6 +12,7 @@ function backFunc() {
 var npsDataDisplay = document.querySelector("#data-display");
 var npsNameDisplay = document.querySelector("#name-display");
 var npsUrlDisplay = document.querySelector("#url-display");
+var npsActDisplay = document.querySelector("#act-display");
 var npsDataDisplayImage = document.querySelector("#data-display-image");
 var npsDataDisplaySubtext = document.querySelector("#data-display-subtext");
 var nameLocation = document.createElement("h2");
@@ -22,6 +23,7 @@ var feeLocation = document.createElement("p");
 var directLocation = document.createElement("p");
 var imageLocation = document.createElement("figure");
 var captionLocation = document.createElement("figcaption");
+var actLocation = document.createElement("p");
 
 //NPS API Variables
 var data = [
@@ -167,6 +169,11 @@ function parkApi(parkCode) {
 
       var imageData = data.data[0].images;
 
+      var actData = data.data[0].activities;
+      for (i = 0; i < actData.length; i++) {
+        npsActDisplay.append(actData[i].name + "  |  ");
+      }
+
       saveImages(
         data.data[0].images,
         data.data[0].latitude,
@@ -178,11 +185,12 @@ function parkApi(parkCode) {
 //Function to append a random image to index2.html
 function saveImages(imageData) {
   var randomImage = imageData[Math.floor(Math.random() * imageData.length)];
-  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='400' class='rounded img-fluid img-thumbnail mx-auto d-block'>";
+  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='400' class='rounded img-fluid img-thumbnail mx-auto d-block' alt='" + randomImage.altText + "'>";
   captionLocation.innerHTML = "<p class='text-center'>" + randomImage.caption + "</p>";
   npsDataDisplayImage.append(imageLocation);
   npsDataDisplaySubtext.append(captionLocation);
 }
+
 // "https://api.openweathermap.org/data/2.5/onecall?lat=32.19831758&lon=-84.12988898&units=imperial&exclude=minutely,hourly&appid=585ba3d2e5d78c9afea8cfd73fcf8a69" //<--test
 function getForecast(lat, lon) {
   var resultsObj = {};
@@ -299,6 +307,7 @@ function renderMaps(lat, lon) {
     });
   });
 }
+
 function toggleEvent() {
   var toggleBtnEl = document.getElementById("toggleBtn");
   toggleBtnEl.addEventListener("click", toggleMaps);
