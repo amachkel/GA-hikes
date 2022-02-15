@@ -160,7 +160,6 @@ function parkApi(parkCode) {
       if (entranceFees.length !== 0) {
         feeLocation.textContent = data.data[0].entranceFees[0].description;
       }
-
       directLocation.textContent = "Directions: " + data.data[0].directionsInfo;
 
       npsNameDisplay.append(nameLocation);
