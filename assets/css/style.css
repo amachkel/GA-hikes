@@ -24,6 +24,8 @@
 body,
 html {
   height: 100%;
+  font-family: 'Cormorant', serif;
+
 }
 
 /* .bg{
@@ -42,7 +44,7 @@ html {
 
 .bg {
   
-  background-image: url("../images/Georgia\ topographic\ map.webp");
+  background-image: url("../images/Georgia\ map\ copy.png");
 
   height: 100%;
 
@@ -53,16 +55,16 @@ html {
 }
 
 main {
-  background-color: transparent;
+  background-color:rgba(234, 234, 234, 0.65);
+  color: black;
 }
 
 .col-sm-10 {
   background-color: transparent;
+  margin-left: 8.5%;
+  margin-right: 8.5%;
 }
 
-p.jumbo-text {
-  font-size: 36px;
-}
 
 /* .title {
   display: inline-block;
@@ -80,7 +82,7 @@ p.jumbo-text {
 
 .jumbo-text {
   text-align: center;
-  font-size: 20px;
+  font-size: 5rem;
 }
 
 .jumbotron {
@@ -89,6 +91,21 @@ p.jumbo-text {
 .card {
   background-color: transparent;
   border: none;
+  text-align: center;
+}
+/* .card .jumbo-text{
+  font-size: 2rem;
+} */
+.card-text{
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.form-control{
+  font-size: 1.5rem;
+  text-align: center;
+}
+.btn{
+  font-size: 1.5rem;
 }
 .container.fixed-bottom {
   width: 100%;
