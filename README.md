@@ -54,6 +54,15 @@ WHEN the user navigates to the new page,
 THEN the user is presented with information about that state park, including an interactive map, 
 current weather data, directions, and a description of local hiking trails.
 ```
+
+## Roles/Tasks
+-Alex: Forecast and map APIs, wireframe
+-Amanda: NPS API, README
+-David: Event handlers, troubleshooting
+-Travis: CSS/bootstrap, QA
+
+-Runtime Terror: HTML
+
 ## Strengths and Challenges
 - Challenge: Learning to coordinate our updates through GitHub 🤯
 - Strength: We worked fabulously as a team and supported each other's professional development.

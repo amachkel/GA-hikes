@@ -18,6 +18,18 @@ html {
   font-family: "Cormorant", serif;
 }
 
+#forecastWrapper {
+  border: 1px solid black;
+  box-shadow: 1px -3px 0px -3px black, -1px 0px 2px 1px black;
+  border-radius: 5px;
+}
+
+.dayData {
+  border: 1px solid black;
+  box-shadow: 1px -3px 0px -3px black, -1px 0px 2px 1px black;
+  border-radius: 5px;
+}
+
 .bg {
   background-image: url("../images/Georgia\ map\ copy.png");
 
@@ -87,8 +99,12 @@ main {
 #forecastWrapper,
 .dayData .card-body {
   border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  background-color: white;
 }
 
 .dayData {
   padding: 5px;
+  margin: 10px;
 }
