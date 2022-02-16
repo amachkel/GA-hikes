@@ -67,6 +67,7 @@ A thanks to our resources:
 - [National Park Service API](https://www.nps.gov/subjects/developer/api-documentation.htm)
 - [ArcGIS API](https://developers.arcgis.com/javascript/latest/)
 - [OpenWeather - One Call API](https://openweathermap.org/api/one-call-api)
+- [Trailforks](https://www.trailforks.com/)
 - [Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
 - [Figma](https://www.figma.com/)
 - [Screencastify - Chrome Extension](https://www.screencastify.com/?gclid=Cj0KCQiAgP6PBhDmARIsAPWMq6kirDwVSm0ryb7sQeSxVQuZG-G7kk9ikfSz77SBh-fA7QS9aKdyjgAaAgJGEALw_wcB)
