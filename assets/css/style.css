@@ -84,10 +84,6 @@ main {
   width: 100%;
 }
 
-/* iframe {
-  width: 100%;
-} */
-
 #forecastWrapper,
 .dayData .card-body {
   border: 1px solid black;
