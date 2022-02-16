@@ -31,72 +31,86 @@ var data = [
     parkCode: "ande",
     fullName: "Andersonville National Historic Site",
     hikeData:
-      "Andersonville is a historic site and does not have any dedicated hiking. It does have a few scenic walking paths.",
+      " is a historic site and does not have any dedicated hiking. It does have a few scenic walking paths.",
+    parkSearch: "",
   },
   {
     parkCode: "appa",
     fullName: "Appalachian National Scenic Trail",
     hikeData:
       " has over 100 miles of hiking trails which continue all the way up to Maine.",
+    parkSearch: "appalachian-trail-corridor-ga-47320",
   },
   {
     parkCode: "chat",
     fullName: "Chattahoochee River National Recreation Area",
     hikeData:
       " is a collection of connected parks. As a whole, the park as just over 50 miles of walking paths and easy trails.",
+    parkSearch: "chattahoochee-river-national-recreation-area-48201",
   },
   {
     parkCode: "chch",
     fullName: "Chickamauga & Chattanooga National Military Park",
     hikeData:
       " has just over 45 miles of hiking trails which take you through the battlefields.",
+    parkSearch: "",
   },
   {
     parkCode: "cuis",
     fullName: "Cumberland Island National Seashore",
     hikeData:
       " has several flat walking paths across the island. In total is has about 27 miles of hiking.",
+    parkSearch: "",
   },
+
   {
     parkCode: "fofr",
     fullName: "Fort Frederica National Monument",
     hikeData:
       " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+
+    parkSearch: "",
   },
   {
     parkCode: "fopu",
     fullName: "Fort Pulaski National Monument",
     hikeData:
       " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+    parkSearch: "",
   },
   {
     parkCode: "jica",
     fullName: "Jimmy Carter National Historical Park",
     hikeData:
       " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+    parkSearch: "",
   },
   {
     parkCode: "kemo",
     fullName: "Kennesaw Mountain National Battlefield Park",
     hikeData:
       " has just over 40 miles of hiking trails that take you up and around the mountain.",
+    parkSearch: "kennesaw-23418",
   },
   {
     parkCode: "malu",
     fullName: "Martin Luther King, Jr. National Historical Park",
     hikeData: " is a historic park and doesn't have any dedicated hiking.",
+    parkSearch: "",
   },
   {
     parkCode: "ocmu",
     fullName: "Ocmulgee Mounds National Historical Park",
     hikeData:
       " is a historic site and doesn't have any dedicated hiking. It does have a few scenic walking paths.",
+    parkSearch: "",
   },
   {
     parkCode: "trte",
     fullName: "Trail Of Tears National Historic Trail",
     hikeData:
       " is a series of historic sites that span several states moving from Georgia out west. These sites don't have dedicated hiking, but they do have several scenic walking paths.",
+    parkSearch: "",
   },
 ];
 var APIKey = "iiyXV98dq4oalbEXmTIS9OH62H5qcBfiKyVQqZHK";
@@ -142,23 +156,32 @@ function parkApi(parkCode) {
       return response.json();
     })
 
-    .then(function (data) {
-      console.log(data);
-      var lat = data.data[0].latitude;
-      var lon = data.data[0].longitude;
+    .then(function (dataResponse) {
+      console.log(dataResponse);
+      var lat = dataResponse.data[0].latitude;
+      var lon = dataResponse.data[0].longitude;
       console.log(lat + lon);
       getForecast(lat, lon);
-      renderMaps(lat, lon);
-      nameLocation.textContent = data.data[0].fullName;
-      descLocation.textContent = data.data[0].description;
+      var current = data.filter(function (el) {
+        return el.parkCode == parkCode;
+      });
+      console.log(current);
+      renderMaps(current[0].parkSearch, lat, lon);
+      nameLocation.textContent = dataResponse.data[0].fullName;
+      descLocation.textContent = dataResponse.data[0].description;
       urlLocation.innerHTML =
-        "<a href='" + data.data[0].url + "'class='btn btn-dark'>National Park Service Website</a>";
-      hoursLocation.textContent = data.data[0].operatingHours[0].description;
-      let entranceFees = data.data[0].entranceFees;
+        "<a href='" +
+        dataResponse.data[0].url +
+        "'class='btn btn-dark'>National Park Service Website</a>";
+      hoursLocation.textContent =
+        dataResponse.data[0].operatingHours[0].description;
+      let entranceFees = dataResponse.data[0].entranceFees;
       if (entranceFees.length !== 0) {
-        feeLocation.textContent = data.data[0].entranceFees[0].description;
+        feeLocation.textContent =
+          dataResponse.data[0].entranceFees[0].description;
       }
-      directLocation.textContent = "Directions: " + data.data[0].directionsInfo;
+      directLocation.textContent =
+        "Directions: " + dataResponse.data[0].directionsInfo;
 
       npsNameDisplay.append(nameLocation);
       npsUrlDisplay.append(urlLocation);
@@ -167,20 +190,20 @@ function parkApi(parkCode) {
       npsDataDisplay.append(feeLocation);
       npsDataDisplay.append(directLocation);
 
-      lat = data.data[0].latitude;
-      lon = data.data[0].longitude;
+      lat = dataResponse.data[0].latitude;
+      lon = dataResponse.data[0].longitude;
 
-      var imageData = data.data[0].images;
+      var imageData = dataResponse.data[0].images;
 
-      var actData = data.data[0].activities;
+      var actData = dataResponse.data[0].activities;
       for (i = 0; i < actData.length; i++) {
         npsActDisplay.append(actData[i].name + "  |  ");
       }
 
       saveImages(
-        data.data[0].images,
-        data.data[0].latitude,
-        data.data[0].longitude
+        dataResponse.data[0].images,
+        dataResponse.data[0].latitude,
+        dataResponse.data[0].longitude
       );
     });
 }
@@ -188,8 +211,14 @@ function parkApi(parkCode) {
 //Function to append a random image to index2.html
 function saveImages(imageData) {
   var randomImage = imageData[Math.floor(Math.random() * imageData.length)];
-  imageLocation.innerHTML = "<img src=" + randomImage.url + " width='400' class='rounded img-fluid img-thumbnail mx-auto d-block' alt='" + randomImage.altText + "'>";
-  captionLocation.innerHTML = "<p class='text-center'>" + randomImage.caption + "</p>";
+  imageLocation.innerHTML =
+    "<img src=" +
+    randomImage.url +
+    " width='400' class='rounded img-fluid img-thumbnail mx-auto d-block' alt='" +
+    randomImage.altText +
+    "'>";
+  captionLocation.innerHTML =
+    "<p class='text-center'>" + randomImage.caption + "</p>";
   npsDataDisplayImage.append(imageLocation);
   npsDataDisplaySubtext.append(captionLocation);
 }
@@ -236,7 +265,10 @@ function renderForecastData(forecastResults) {
     let maxEl = document.createElement("span");
     let imgEl = document.createElement("p");
     let popEl = document.createElement("p");
-    dateEl.setAttribute("class", "row justify-content-center card-title dateVal");
+    dateEl.setAttribute(
+      "class",
+      "row justify-content-center card-title dateVal"
+    );
     minEl.setAttribute("class", "minTempVal");
     maxEl.setAttribute("class", "maxTempVal");
     imgEl.setAttribute("class", "image");
@@ -262,8 +294,73 @@ function renderForecastData(forecastResults) {
   return forecastCard;
 }
 
+function renderMaps(parkSearch, lat, lon) {
+  // let iframeEl = document.createElement("iframe");
+  let mapWrapperEl = document.getElementById("mapWrapper");
+
+  let toggleBtnEl = document.getElementById("toggleBtn");
+  let topoMapEl = document.getElementById("topo-wrapper");
+  console.log(parkSearch);
+  // console.log(data[i].parkSearch);
+  if (parkSearch != "" && parkSearch != undefined) {
+    toggleBtnEl.style = "display: none";
+    let divEl = document.createElement("div");
+    let div2El = document.createElement("div");
+    // <div class="" data-w="800px" data-h="150px" data-rid="23418" data-counts="1" data-stats="1"></div>
+    div2El.setAttribute("class", "TrailforksRegionInfo");
+    div2El.setAttribute("data-w", "100%");
+    div2El.setAttribute("data-h", "150px");
+
+    div2El.setAttribute("data-counts", "1");
+    div2El.setAttribute("data-stats", "1");
+    divEl.setAttribute("class", "TrailforksWidgetMap");
+    divEl.setAttribute("data-w", "100%");
+    divEl.setAttribute("data-h", "400px");
+    // divEl.setAttribute("data-rid", "23418");
+    divEl.setAttribute("data-activitytype", "6");
+    divEl.setAttribute("data-maptype", "trailforks");
+    divEl.setAttribute("data-trailstyle", "difficulty");
+    divEl.setAttribute("data-controls", "1");
+    divEl.setAttribute("data-list", "0");
+    divEl.setAttribute("data-dml", "1");
+    divEl.setAttribute("data-layers", "labels,poi,polygon,directory,region");
+    divEl.setAttribute("data-z", "");
+    divEl.setAttribute("data-lat", "");
+    divEl.setAttribute("data-lon", "");
+    divEl.setAttribute("data-hideunsanctioned", "0");
+    divEl.style = "width: 100%";
+    div2El.style = "width: 100%";
+    mapWrapperEl.append(div2El);
+    mapWrapperEl.append(divEl);
+    
+    let splitCode = parkSearch.split("-");
+    let code = splitCode[splitCode.length - 1];
+    console.log(code);
+    divEl.setAttribute("data-rid", code);
+    div2El.setAttribute("data-rid", code);
+    let mapUrlEl = document.createElement("div");
+    mapUrlEl.setAttribute("id", "mapUrl");
+    mapUrlEl.innerHTML = `<a href="https://www.trailforks.com/region/${parkSearch}/"></a>`;
+
+    mapWrapperEl.append(mapUrlEl);
+    var script = document.createElement("script");
+    script.setAttribute(
+      "src",
+      "https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js"
+    );
+    document.getElementsByTagName("head")[0].appendChild(script);
+    var widgetCheck = false;
+  } else {
+    toggleBtnEl.style = "display: inline-block";
+    topoMapEl.style = "display: block";
+    console.log("No trails!");
+    renderTopoMap(lat, lon);
+    renderHybridMap(lat, lon);
+  }
+}
+
 //arcgis API key AAPK69742b5d3e5d4d969f28ce8b97ee91f9c-GZhvscrk59aNtlQqY1LEIYm6FP_SH-3eVXanS5UfS9755ehIGeGrMn0_NmE_pP
-function renderMaps(lat, lon) {
+function renderTopoMap(lat, lon) {
   require(["esri/config", "esri/Map", "esri/views/MapView"], function (
     esriConfig,
     Map,
@@ -286,7 +383,9 @@ function renderMaps(lat, lon) {
       },
     });
   });
+}
 
+function renderHybridMap(lat, lon) {
   require(["esri/config", "esri/Map", "esri/views/MapView"], function (
     esriConfig,
     Map,
