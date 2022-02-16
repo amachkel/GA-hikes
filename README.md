@@ -56,11 +56,11 @@ current weather data, directions, and a description of local hiking trails.
 ```
 
 ## Roles/Tasks
--Alex: Forecast and map APIs, wireframe
--Amanda: NPS API, README
--David: Event handlers, troubleshooting
--Travis: CSS/bootstrap, QA
-
+-Alex: Forecast and map APIs, wireframe<br>
+-Amanda: NPS API, README<br>
+-David: Event handlers, troubleshooting<br>
+-Travis: CSS/bootstrap, QA<br>
+<br>
 -Runtime Terror: HTML
 
 ## Strengths and Challenges
